@@ -1,0 +1,16 @@
+
+{% extends 'account/base.html' %}
+{% load static %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+
+    <h2>Inscription</h2>
+    <form method="post">
+        {{ signup_form.as_p }}
+        {% csrf_token %}
+        <button type="submit" >S’inscrire</button>
+    </form>
+
+{% endblock content %}
