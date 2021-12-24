@@ -1,13 +1,16 @@
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
 from .forms import ProfileCreationForm, ProfileChangeForm, ProfileLoginForm
 
 
 def home(request):
-    return render(request, 'account/home.html', {})
+    profile = request.user
+    full_name = f"{profile.first_name}-{profile.last_name}"
+    return render(request, 'account/home.html', {'full_name': full_name})
 
 
 def signup_page(request):
@@ -44,4 +47,23 @@ def login_page(request):
         login_form = ProfileLoginForm()
     return render(request, 'account/login.html',
                   {'login_form': login_form})
+
+
+@login_required
+def update_account(request, full_name):
+    profile = request.user
+    full_name = f"{profile.first_name}-{profile.last_name}"
+    return render(request, 'account/update_account.html',
+                  {'profile': profile})
+
+
+@login_required
+def account(request, full_name):
+    """
+    Allow a logged in user to access to his profile details
+    """
+    profile = request.user
+    full_name = f"{profile.first_name}-{profile.last_name}"
+    return render(request, 'account/account.html',
+                  {'profile': profile, 'full_name': full_name})
 
