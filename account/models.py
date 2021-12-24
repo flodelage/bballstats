@@ -7,7 +7,7 @@ class Profile(AbstractUser):
     email = models.EmailField(
         unique=True,
         error_messages={'unique': 'Un utilisateur avec cet email existe déjà.'},
-        max_length=254
+        max_length=128
     )
     first_name = models.CharField('Prénom', max_length=40)
     last_name = models.CharField('Nom', max_length=40)
