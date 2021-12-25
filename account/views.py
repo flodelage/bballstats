@@ -1,16 +1,21 @@
 
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.urls import reverse
 
 from .forms import ProfileCreationForm, ProfileChangeForm, ProfileLoginForm
 
 
 def home(request):
-    profile = request.user
-    context = {'username': profile.username} if profile.is_authenticated else {}
-    return render(request, 'account/home.html', context)
+    context = {'username': request.user.username} if request.user.is_authenticated else {}
+    return render(
+        request,
+        'account/home.html',
+        context
+    )
 
 
 def signup_page(request):
@@ -24,8 +29,11 @@ def signup_page(request):
             user = signup_form.save()
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
-    return render(request, 'account/signup.html',
-                  {'signup_form': signup_form})
+    return render(
+        request,
+        'account/signup.html',
+        {'signup_form': signup_form}
+    )
 
 
 def login_page(request):
@@ -45,8 +53,11 @@ def login_page(request):
                 return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         login_form = ProfileLoginForm()
-    return render(request, 'account/login.html',
-                  {'login_form': login_form})
+    return render(
+        request,
+        'account/login.html',
+        {'login_form': login_form}
+    )
 
 
 @login_required
@@ -59,18 +70,42 @@ def log_out(request):
 
 
 @login_required
-def update_account(request, username):
-    """
-    Allow a user to update his account
-    """
-    pass
-
-
-@login_required
 def account(request, username):
     """
     Allow a logged in user to access to his profile details
     """
-    profile = request.user
-    return render(request, 'account/account.html',
-                  {'profile': profile, 'username': profile.username})
+    return render(
+        request,
+        'account/account.html',
+        {'profile': request.user, 'username': request.user.username}
+    )
+
+
+@login_required
+def update_informations(request, username):
+    if request.method == 'POST':
+        update_form = ProfileChangeForm(request.POST, instance=request.user)
+        if update_form.is_valid():
+            update_form.save()
+            return redirect(
+                reverse('account', kwargs={'username': request.user.username})
+            )
+    else:
+        update_form = ProfileChangeForm(instance=request.user)
+    return render(
+        request,
+        'account/update-informations.html',
+        {'update_form': update_form, 'username': request.user.username}
+    )
+
+
+@login_required
+def update_password(request, username):
+    """
+    Allow a user to update his account password
+    """
+    return render(
+        request,
+        'account/update-password.html',
+        {'profile': profile, 'username': request.user.username}
+    )
