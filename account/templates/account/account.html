@@ -5,9 +5,9 @@
 
 {% block content %}
 
-<h2>Compte de {{ profile.first_name }} {{ profile.last_name }}</h2>
+<h2>Compte de {{ profile.username }}</h2>
 
-<a href="{% url 'update_account' full_name %}">Modifier les informations du compte</a>
-<a href="{% url 'update_account' full_name %}">Modifier le mot de passe</a>
+<a href="{% url 'update_account' username %}">Modifier les informations du compte</a>
+<a href="{% url 'update_account' username %}">Modifier le mot de passe</a>
 
 {% endblock content %}

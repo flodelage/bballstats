@@ -7,13 +7,13 @@ from django import forms
 class ProfileCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ('first_name', 'last_name', 'email',)
+        fields = ('username', 'email',)
 
 
 class ProfileChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = get_user_model()
-        fields = ('first_name', 'last_name', 'email',)
+        fields = ('username', 'email',)
 
 
 class ProfileLoginForm(forms.Form):

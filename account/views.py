@@ -9,10 +9,7 @@ from .forms import ProfileCreationForm, ProfileChangeForm, ProfileLoginForm
 
 def home(request):
     profile = request.user
-    context = {}
-    if profile.is_authenticated:
-        full_name = f"{profile.first_name}-{profile.last_name}"
-        context = {'full_name': full_name}
+    context = {'username': profile.username} if profile.is_authenticated else {}
     return render(request, 'account/home.html', context)
 
 
@@ -62,7 +59,7 @@ def log_out(request):
 
 
 @login_required
-def update_account(request, full_name):
+def update_account(request, username):
     """
     Allow a user to update his account
     """
@@ -70,12 +67,10 @@ def update_account(request, full_name):
 
 
 @login_required
-def account(request, full_name):
+def account(request, username):
     """
     Allow a logged in user to access to his profile details
     """
     profile = request.user
-    full_name = f"{profile.first_name}-{profile.last_name}"
     return render(request, 'account/account.html',
-                  {'profile': profile, 'full_name': full_name})
-
+                  {'profile': profile, 'username': profile.username})
