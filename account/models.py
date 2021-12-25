@@ -22,4 +22,4 @@ class Profile(AbstractUser):
     USERNAME_FIELD = 'email'
 
     def __str__(self):
-        return f"Profil {self.pk}: {self.username}/ {self.email}"
+        return f"Profil {self.pk}/ {self.username}, {self.email}"
