@@ -1,0 +1,29 @@
+[
+    {
+      "model": "account.profile",
+      "pk": 1,
+      "fields": {
+        "email": "steve.kerr@django.com",
+        "username": "steve.kerr",
+        "password": "GoldenstateWarriors"
+      }
+    },
+    {
+      "model": "account.profile",
+      "pk": 2,
+      "fields": {
+        "email": "steve.nash@django.com",
+        "username": "steve.nash",
+        "password": "BrooklynNets"
+      }
+    },
+    {
+        "model": "account.profile",
+        "pk": 3,
+        "fields": {
+          "email": "frank.vogel@django.com",
+          "username": "frank.vogel",
+          "password": "LosangelesLakers"
+        }
+      }
+  ]
