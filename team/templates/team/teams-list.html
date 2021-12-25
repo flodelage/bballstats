@@ -1,0 +1,20 @@
+
+{% extends 'account/base.html' %}
+
+{% block title %}Mes équipes{% endblock %}
+
+{% block content %}
+
+<h2>Mes équipes</h2>
+
+{% if teams %}
+    {% for team in teams %}
+        {{ team.club_name }}
+    {% endfor %}
+{% else %}
+    <p>Tu n'as pas encore d'équipe</p>
+{% endif %}
+
+<a href="{% url 'team_create' %}">Créer une équipe</a>
+
+{% endblock content %}
