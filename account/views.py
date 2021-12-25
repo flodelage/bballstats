@@ -9,8 +9,11 @@ from .forms import ProfileCreationForm, ProfileChangeForm, ProfileLoginForm
 
 def home(request):
     profile = request.user
-    full_name = f"{profile.first_name}-{profile.last_name}"
-    return render(request, 'account/home.html', {'full_name': full_name})
+    context = {}
+    if profile.is_authenticated:
+        full_name = f"{profile.first_name}-{profile.last_name}"
+        context = {'full_name': full_name}
+    return render(request, 'account/home.html', context)
 
 
 def signup_page(request):
@@ -50,11 +53,20 @@ def login_page(request):
 
 
 @login_required
+def log_out(request):
+    """
+    Allow a logged in user to log out
+    """
+    logout(request)
+    return redirect(settings.LOGIN_REDIRECT_URL)
+
+
+@login_required
 def update_account(request, full_name):
-    profile = request.user
-    full_name = f"{profile.first_name}-{profile.last_name}"
-    return render(request, 'account/update_account.html',
-                  {'profile': profile})
+    """
+    Allow a user to update his account
+    """
+    pass
 
 
 @login_required

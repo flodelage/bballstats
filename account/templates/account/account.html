@@ -7,6 +7,7 @@
 
 <h2>Compte de {{ profile.first_name }} {{ profile.last_name }}</h2>
 
-<a href="{% url 'update_account' full_name %}">Modifier compte</a>
+<a href="{% url 'update_account' full_name %}">Modifier les informations du compte</a>
+<a href="{% url 'update_account' full_name %}">Modifier le mot de passe</a>
 
 {% endblock content %}

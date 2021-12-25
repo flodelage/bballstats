@@ -7,5 +7,10 @@
 
 <h2>Modifier compte de {{ profile.first_name }} {{ profile.last_name }}</h2>
 
+<form method="post">
+    {{ update_form.as_p }}
+    {% csrf_token %}
+    <button type="submit" >Modifier</button>
+</form>
 
 {% endblock content %}

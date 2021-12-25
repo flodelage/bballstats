@@ -26,7 +26,16 @@
     </head>
     <body>
         <!-- Navigation-->
-        <a href="{% url 'home' %}">Accueil</a>
+        <ul>
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'account' full_name %}">Compte</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Déconnexion</a></li>
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Connexion</i></a></li>
+            {% endif %}
+        </ul>
         {% block content %}
         {% endblock %}
         <!-- Footer-->
