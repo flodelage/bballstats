@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'account',
     'team',
+    'player',
     'game',
 ]
 

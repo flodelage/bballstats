@@ -5,23 +5,23 @@ from django.conf import settings
 
 class Team(models.Model):
     club_name = models.CharField(
-        'Nom du club',
+        verbose_name='Nom du club',
         max_length=128
     )
     city = models.CharField(
-        'Ville',
+        verbose_name='Ville',
         max_length=128
     )
     province = models.CharField(
-        'Département',
+        verbose_name='Département',
         max_length=128
     )
     level = models.CharField(
-        'Niveau',
+        verbose_name='Niveau',
         max_length=128
     )
     picture = models.ImageField(
-        'Photo',
+        verbose_name='Photo',
         null=True
     )
 

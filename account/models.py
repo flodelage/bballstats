@@ -10,7 +10,7 @@ class Profile(AbstractUser):
         max_length=128
     )
     username = models.CharField(
-        'Utilisateur',
+        verbose_name='Utilisateur',
         unique=True,
         error_messages={'unique': 'Un utilisateur avec ce nom existe déjà.'},
         max_length=128

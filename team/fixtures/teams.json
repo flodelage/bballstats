@@ -1,0 +1,29 @@
+
+[
+    {
+        "model": "team.team",
+        "pk": 1,
+        "fields": {
+            "club_name": "Warriors",
+            "city": "Oakland",
+            "province": "California",
+            "level": "nba",
+            "picture":null,
+            "profile": 1
+        }
+
+    },
+
+    {
+        "model": "team.team",
+        "pk": 2,
+        "fields": {
+            "club_name": "Lakers",
+            "city": "Los Angeles",
+            "province": "California",
+            "level": "nba",
+            "picture":null,
+            "profile": 2
+        }
+    }
+]

@@ -1,0 +1,128 @@
+
+[
+    {
+        "model": "player.player",
+        "pk": 1,
+        "fields": {
+            "first_name": "Stephen",
+            "last_name": "Curry",
+            "jersey_number": "30",
+            "picture": null,
+            "team": 1
+        }
+
+    },
+
+    {
+        "model": "player.player",
+        "pk": 2,
+        "fields": {
+            "first_name": "Klay",
+            "last_name": "Thompson",
+            "jersey_number": "11",
+            "picture": null,
+            "team": 1
+        }
+    },
+
+    {
+        "model": "player.player",
+        "pk": 3,
+        "fields": {
+            "first_name": "Andrew",
+            "last_name": "Wiggins",
+            "jersey_number": "22",
+            "picture": null,
+            "team": 1
+        }
+    },
+
+    {
+        "model": "player.player",
+        "pk": 4,
+        "fields": {
+            "first_name": "Draymond",
+            "last_name": "Green",
+            "jersey_number": "23",
+            "picture": null,
+            "team": 1
+        }
+    },
+
+    {
+        "model": "player.player",
+        "pk": 5,
+        "fields": {
+            "first_name": "James",
+            "last_name": "Wiseman",
+            "jersey_number": "33",
+            "picture": null,
+            "team": 1
+        }
+    },
+
+
+
+
+
+    {
+        "model": "player.player",
+        "pk": 6,
+        "fields": {
+            "first_name": "Lebron",
+            "last_name": "James",
+            "jersey_number": "6",
+            "picture": null,
+            "team": 2
+        }
+
+    },
+
+    {
+        "model": "player.player",
+        "pk": 7,
+        "fields": {
+            "first_name": "Russell",
+            "last_name": "Westbrook",
+            "jersey_number": "0",
+            "picture": null,
+            "team": 2
+        }
+    },
+
+    {
+        "model": "player.player",
+        "pk": 8,
+        "fields": {
+            "first_name": "Anthony",
+            "last_name": "Davis",
+            "jersey_number": "3",
+            "picture": null,
+            "team": 2
+        }
+    },
+
+    {
+        "model": "player.player",
+        "pk": 9,
+        "fields": {
+            "first_name": "Carmelo",
+            "last_name": "Anthony",
+            "jersey_number": "7",
+            "picture": null,
+            "team": 2
+        }
+    },
+
+    {
+        "model": "player.player",
+        "pk": 10,
+        "fields": {
+            "first_name": "Dwight",
+            "last_name": "Howard",
+            "jersey_number": "39",
+            "picture": null,
+            "team": 2
+        }
+    }
+]
