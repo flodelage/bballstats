@@ -1,0 +1,22 @@
+[
+    {
+        "model": "game.game",
+        "pk": 1,
+        "fields": {
+            "date": "2021-12-26",
+            "opponent": "Phoenix Suns",
+            "opponent_points": 123,
+            "comment": "Match difficile. Trop de maladresse.  On doit faire plus d'efforts sur le repli défensif"
+        }
+    },
+
+    {
+        "model": "game.game",
+        "pk": 2, "fields": {
+            "date": "2021-12-26",
+            "opponent": "Portland Blazers",
+            "opponent_points": 99,
+            "comment": "Toujours beaucoup de maladresse, mais cette fois notre rigueur défensive nous a sauvé"
+        }
+    }
+]
