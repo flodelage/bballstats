@@ -7,11 +7,13 @@
 
 {% if games %}
     {% for game in games %}
-        {{ game.date }}
-        <br>
-        mon équipe score - {{ game.opponent_points }} {{ game.opponent }}
-        <br>
-        {{ game.comment }}
+        <a href="{% url 'game_detail' username team.pk game.pk %}">
+            {{ game.date }}
+            <br>
+            mon équipe score - {{ game.opponent_points }} {{ game.opponent }}
+            <br>
+            {{ game.comment }}
+        </a>
         <br>
         <br>
     {% endfor %}
