@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Game
 from team.models import Team
 from statistic.models import Statistic
-from statistic.utils.calculations import TeamStatisticsCalculator
+from statistic.utils.team_totals_calculator import TeamTotalsCalculator
 
 
 @login_required
@@ -30,8 +30,8 @@ def game_detail(request, username, team_pk, game_pk):
     game = get_object_or_404(Game, pk=game_pk)
     players_stats = Statistic.objects.filter(game__pk=game_pk)
 
-    team_stats_calculator = TeamStatisticsCalculator()
-    team_stats = team_stats_calculator.final_teams_statistics(players_stats)
+    team_totals_calculator = TeamTotalsCalculator()
+    team_stats = team_totals_calculator.teams_statistics(players_stats)
 
     return render(
         request,

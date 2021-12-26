@@ -1,5 +1,5 @@
 
-class TeamStatisticsCalculator():
+class TeamTotalsCalculator():
 
     def __init__(self):
         self.team_stats = {
@@ -78,7 +78,7 @@ class TeamStatisticsCalculator():
             self.team_stats['free_throws_percent'] = 0.0
 
 
-    def final_teams_statistics(self, players_statistics):
+    def teams_statistics(self, players_statistics):
         self.add_players_statistics(players_statistics)
         self.field_goals_percent()
         self.three_points_percent()
