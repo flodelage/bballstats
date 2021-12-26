@@ -136,7 +136,7 @@
             "turnovers": 4,
             "fouls": 3,
             "player": 1,
-            "game": 1
+            "game": 2
         }
     },
 
@@ -159,7 +159,7 @@
             "turnovers": 4,
             "fouls": 2,
             "player": 2,
-            "game": 1
+            "game": 2
         }
     },
 
@@ -182,7 +182,7 @@
             "turnovers": 3,
             "fouls": 3,
             "player": 3,
-            "game": 1
+            "game": 2
         }
     },
 
@@ -205,7 +205,7 @@
             "turnovers": 2,
             "fouls": 5,
             "player": 4,
-            "game": 1
+            "game": 2
         }
     },
 
@@ -228,7 +228,7 @@
             "turnovers": 2,
             "fouls": 2,
             "player": 5,
-            "game": 1
+            "game": 2
         }
     }
 ]

@@ -5,11 +5,15 @@
 
 {% block content %}
 
-<h2>mon équipe score - {{ game.opponent_points }} {{ game.opponent }}</h2>
+<h2>{{ team.club_name }} [score] - {{ game.opponent_points }} {{ game.opponent }}</h2>
 
-<a href=""><h3>Statistiques de l'équipe</h3></a>
+<h3>Statistiques des joueurs</h3>
+{% for stat in stats %}
+    {{ stat.game.opponent }}
+{% endfor %}
 
-<a href=""><h3>Statistiques des joueurs</h3></a>
+<h3>Statistiques de l'équipe</h3>
+
 
 
 {% endblock content %}
