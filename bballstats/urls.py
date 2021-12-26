@@ -27,5 +27,5 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('account/<str:username>/teams/', include('team.urls')),
     path('account/<str:username>/team/<str:team_pk>/players/', include('player.urls')),
-    path('game/', include('game.urls')),
+    path('account/<str:username>/team/<str:team_pk>/games/', include('game.urls')),
 ]

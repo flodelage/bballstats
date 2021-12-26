@@ -1,3 +1,7 @@
+
 from django.shortcuts import render
 
-# Create your views here.
+
+def games_list(request, username, team_pk):
+    username = request.user.username
+    games = Game.objects.filter()
