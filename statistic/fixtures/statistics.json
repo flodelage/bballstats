@@ -1,0 +1,234 @@
+[
+    {
+        "model": "statistic.statistic",
+        "pk": 1,
+        "fields": {
+            "minutes": 48,
+            "field_goals_made": 14,
+            "field_goals_attempted": 20,
+            "three_points_made": 7,
+            "three_points_attempted": 12,
+            "free_throws_made": 9,
+            "free_throws_attempted": 9,
+            "offensive_rebounds": 1,
+            "defensive_rebounds": 4,
+            "assists": 7,
+            "steals": 1,
+            "blocks": 0,
+            "turnovers": 3,
+            "fouls": 4,
+            "player": 1,
+            "game": 1
+        }
+    },
+
+    {
+        "model": "statistic.statistic",
+        "pk": 2,
+        "fields": {
+            "minutes": 27,
+            "field_goals_made": 8,
+            "field_goals_attempted": 15,
+            "three_points_made": 4,
+            "three_points_attempted": 8,
+            "free_throws_made": 5,
+            "free_throws_attempted": 6,
+            "offensive_rebounds": 1,
+            "defensive_rebounds": 6,
+            "assists": 3,
+            "steals": 2,
+            "blocks": 1,
+            "turnovers": 2,
+            "fouls": 5,
+            "player": 2,
+            "game": 1
+        }
+    },
+
+    {
+        "model": "statistic.statistic",
+        "pk": 3,
+        "fields": {
+            "minutes": 22,
+            "field_goals_made": 5,
+            "field_goals_attempted": 12,
+            "three_points_made": 2,
+            "three_points_attempted": 5,
+            "free_throws_made": 2,
+            "free_throws_attempted": 2,
+            "offensive_rebounds": 1,
+            "defensive_rebounds": 3,
+            "assists": 2,
+            "steals": 1,
+            "blocks": 1,
+            "turnovers": 2,
+            "fouls": 2,
+            "player": 3,
+            "game": 1
+        }
+    },
+
+    {
+        "model": "statistic.statistic",
+        "pk": 4,
+        "fields": {
+            "minutes": 48,
+            "field_goals_made": 6,
+            "field_goals_attempted": 10,
+            "three_points_made": 1,
+            "three_points_attempted": 3,
+            "free_throws_made": 4,
+            "free_throws_attempted": 6,
+            "offensive_rebounds": 1,
+            "defensive_rebounds": 4,
+            "assists": 7,
+            "steals": 1,
+            "blocks": 1,
+            "turnovers": 3,
+            "fouls": 4,
+            "player": 4,
+            "game": 1
+        }
+    },
+
+    {
+        "model": "statistic.statistic",
+        "pk": 5,
+        "fields": {
+            "minutes": 21,
+            "field_goals_made": 3,
+            "field_goals_attempted": 6,
+            "three_points_made": 0,
+            "three_points_attempted": 0,
+            "free_throws_made": 4,
+            "free_throws_attempted": 8,
+            "offensive_rebounds": 2,
+            "defensive_rebounds": 3,
+            "assists": 1,
+            "steals": 1,
+            "blocks": 1,
+            "turnovers": 1,
+            "fouls": 2,
+            "player": 5,
+            "game": 1
+        }
+    },
+
+
+
+
+    {
+        "model": "statistic.statistic",
+        "pk": 6,
+        "fields": {
+            "minutes": 38,
+            "field_goals_made": 12,
+            "field_goals_attempted": 26,
+            "three_points_made": 6,
+            "three_points_attempted":12,
+            "free_throws_made": 6,
+            "free_throws_attempted": 7,
+            "offensive_rebounds": 1,
+            "defensive_rebounds": 2,
+            "assists": 4,
+            "steals": 1,
+            "blocks": 0,
+            "turnovers": 4,
+            "fouls": 3,
+            "player": 1,
+            "game": 1
+        }
+    },
+
+    {
+        "model": "statistic.statistic",
+        "pk": 7,
+        "fields": {
+            "minutes": 25,
+            "field_goals_made": 8,
+            "field_goals_attempted": 15,
+            "three_points_made": 2,
+            "three_points_attempted": 5,
+            "free_throws_made": 3,
+            "free_throws_attempted": 5,
+            "offensive_rebounds": 0,
+            "defensive_rebounds": 3,
+            "assists": 2,
+            "steals": 1,
+            "blocks": 0,
+            "turnovers": 4,
+            "fouls": 2,
+            "player": 2,
+            "game": 1
+        }
+    },
+
+    {
+        "model": "statistic.statistic",
+        "pk": 8,
+        "fields": {
+            "minutes": 23,
+            "field_goals_made": 3,
+            "field_goals_attempted": 8,
+            "three_points_made": 1,
+            "three_points_attempted": 3,
+            "free_throws_made": 2,
+            "free_throws_attempted": 3,
+            "offensive_rebounds": 1,
+            "defensive_rebounds": 2,
+            "assists": 4,
+            "steals": 0,
+            "blocks": 0,
+            "turnovers": 3,
+            "fouls": 3,
+            "player": 3,
+            "game": 1
+        }
+    },
+
+    {
+        "model": "statistic.statistic",
+        "pk": 9,
+        "fields": {
+            "minutes": 35,
+            "field_goals_made": 8,
+            "field_goals_attempted": 13,
+            "three_points_made": 1,
+            "three_points_attempted": 4,
+            "free_throws_made": 5,
+            "free_throws_attempted": 8,
+            "offensive_rebounds": 2,
+            "defensive_rebounds": 10,
+            "assists": 9,
+            "steals": 2,
+            "blocks": 0,
+            "turnovers": 2,
+            "fouls": 5,
+            "player": 4,
+            "game": 1
+        }
+    },
+
+    {
+        "model": "statistic.statistic",
+        "pk": 10,
+        "fields": {
+            "minutes": 17,
+            "field_goals_made": 1,
+            "field_goals_attempted": 3,
+            "three_points_made": 0,
+            "three_points_attempted": 0,
+            "free_throws_made": 2,
+            "free_throws_attempted": 4,
+            "offensive_rebounds": 1,
+            "defensive_rebounds": 3,
+            "assists": 0,
+            "steals": 0,
+            "blocks": 0,
+            "turnovers": 2,
+            "fouls": 2,
+            "player": 5,
+            "game": 1
+        }
+    }
+]
