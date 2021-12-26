@@ -1,11 +1,13 @@
 
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 from .models import Game
 from team.models import Team
 from statistic.models import Statistic
 
 
+@login_required
 def games_list(request, username, team_pk):
     username = request.user.username
     team = get_object_or_404(Team, pk=team_pk)
@@ -16,6 +18,7 @@ def games_list(request, username, team_pk):
         {'username': username, 'team': team, 'games': games}
     )
 
+@login_required
 def game_detail(request, username, team_pk, game_pk):
     username = request.user.username
     team = get_object_or_404(Team, pk=team_pk)

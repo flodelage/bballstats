@@ -74,3 +74,51 @@ class Statistic(models.Model):
         on_delete=models.CASCADE,
         related_name="statistics"
     )
+
+    @property
+    def points(self):
+        """
+        Calculate total points from different shots made
+        """
+        return ((self.field_goals_made - self.three_points_made)*2) + (self.three_points_made*3) + (self.free_throws_made*1)
+
+    @property
+    def field_goals_percent(self):
+        """
+        Calculate field goal percent from
+        3pts and 2pts shots
+        """
+        try:
+            return round((self.field_goals_made/self.field_goals_attempted) *100, 1)
+        except ZeroDivisionError:
+            return 0.0
+
+    @property
+    def three_points_percent(self):
+        """
+        Calculate field goal percent from
+        3pts shots
+        """
+        try:
+            return round((self.three_points_made/self.three_points_attempted) *100, 1)
+        except ZeroDivisionError:
+            return 0.0
+
+    @property
+    def free_throws_percent(self):
+        """
+        Calculate field goal percent from
+        free throws shots
+        """
+        try:
+            return round((self.free_throws_made/self.free_throws_attempted) *100, 1)
+        except ZeroDivisionError:
+            return 0.0
+
+    @property
+    def rebounds(self):
+        """
+        Calculate total rebounds from
+        offensive and defensive rebounds
+        """
+        return self.offensive_rebounds + self.defensive_rebounds

@@ -1,7 +1,7 @@
 
 {% extends 'account/base.html' %}
 
-{% block title %}Match contre {{game.opponent}}{% endblock %}
+{% block title %}Match contre {{ game.opponent }}{% endblock %}
 
 {% block content %}
 
@@ -9,8 +9,12 @@
 
 <h3>Statistiques des joueurs</h3>
 {% for stat in stats %}
-    {{ stat.game.opponent }}
-{% endfor %}
+    {{ stat.player.first_name }} {{ stat.player.last_name }}:
+    <br>
+    {{ stat.points }} points | tirs réussis {{ stat.field_goals_made }}  | tirs tentés {{ stat.field_goals_attempted }} | % tirs {{ stat.field_goals_percent }} | 3pts réussis {{ stat.three_points_made }} | 3pts tentés {{ stat.three_points_attempted }} | % 3pts {{ stat.three_points_percent }} | LF réussis {{ stat.free_throws_made }} | LF tentés {{ stat.free_throws_attempted }} | % LF {{ stat.free_throws_percent }} | rebonds off {{ stat.offensive_rebounds }} | rebonds def {{ stat.defensive_rebounds }} | rebonds {{ stat.rebounds }} | passes décisives {{ stat.assists }} | interceptions {{ stat.steals }} | contre {{ stat.blocks }} | b. perdus {{ stat.turnovers }} | fautes {{ stat.fouls }}
+    <br>
+    <br>
+    {% endfor %}
 
 <h3>Statistiques de l'équipe</h3>
 
