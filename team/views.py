@@ -4,11 +4,25 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
 from .models import Team
+from .forms import TeamCreateForm
 
 
 @login_required
 def team_create(request):
-    pass
+    """
+    Allow a user to create team
+    """
+    team_form = TeamCreateForm()
+    if request.method == 'POST':
+        team_form = TeamCreateForm(request.POST)
+        if team_form.is_valid():
+            team_form.save()
+            return redirect('home')
+    return render(
+        request,
+        'team/team-create.html',
+        {'username':request.user.username, 'team_form': team_form}
+    )
 
 
 @login_required

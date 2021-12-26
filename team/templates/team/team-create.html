@@ -1,0 +1,16 @@
+
+{% extends 'account/base.html' %}
+
+{% block title %}Créer équipe{% endblock %}
+
+{% block content %}
+
+<h2>Créer une équipe</h2>
+
+<form method="post">
+    {{ team_form.as_p }}
+    {% csrf_token %}
+    <button type="submit">Créer</button>
+</form>
+
+{% endblock content %}
