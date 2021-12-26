@@ -3,6 +3,7 @@ from django.urls import path
 from player import views
 
 
+# urls start with: account/<str:username>/team/<str:team_pk>/players/
 urlpatterns = [
-    path('<int:team_pk>/players/', views.players_list, name='players_list'),
+    path('', views.players_list, name='players_list'),
 ]

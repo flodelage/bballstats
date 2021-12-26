@@ -9,12 +9,12 @@
 
 {% if teams %}
     {% for team in teams %}
-        <a href="{% url 'team_detail' team.club_name %}">{{ team.club_name }}</a>
+        <a href="{% url 'team_detail' username team.pk %}">{{ team.club_name }}</a>
     {% endfor %}
 {% else %}
     <p>Tu n'as pas encore d'équipe</p>
 {% endif %}
 
-<a href="{% url 'team_create' %}">Créer une équipe</a>
+<a href="{% url 'team_create' username %}">Créer une équipe</a>
 
 {% endblock content %}

@@ -21,12 +21,11 @@ from account import views as account_views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-
     path('', account_views.home, name='home'),
 
+    path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
-    path('team/', include('team.urls')),
-    path('player/', include('player.urls')),
+    path('account/<str:username>/teams/', include('team.urls')),
+    path('account/<str:username>/team/<str:team_pk>/players/', include('player.urls')),
     path('game/', include('game.urls')),
 ]

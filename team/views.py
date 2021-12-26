@@ -9,10 +9,11 @@ from .forms import TeamCreateForm
 
 
 @login_required
-def team_create(request):
+def team_create(request, username):
     """
     Allow a user to create team
     """
+    username = request.user.username
     team_form = TeamCreateForm()
     if request.method == 'POST':
         team_form = TeamCreateForm(request.POST)
@@ -22,27 +23,29 @@ def team_create(request):
     return render(
         request,
         'team/team-create.html',
-        {'username':request.user.username, 'team_form': team_form}
+        {'username':username, 'team_form': team_form}
     )
 
 
 @login_required
-def teams_list(request):
+def teams_list(request, username):
+    username = request.user.username
     teams = Team.objects.filter(profile__pk=request.user.pk)
     return render(
         request,
         'team/teams-list.html',
-        {'username':request.user.username, 'teams': teams}
+        {'username':username, 'teams': teams}
     )
 
 
 @login_required
-def team_detail(request, club_name):
-    team = get_object_or_404(Team, club_name=club_name)
-    players = Player.objects.filter(team__pk=team.pk)
+def team_detail(request, username, team_pk):
+    username = request.user.username
+    team = get_object_or_404(Team, pk=team_pk)
+    players = Player.objects.filter(team__pk=team_pk)
     return render(
         request,
         'team/team-detail.html',
-        {'username':request.user.username, 'team': team, 'players': players}
+        {'username':username, 'team': team, 'players': players}
     )
 
