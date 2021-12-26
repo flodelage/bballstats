@@ -5,10 +5,10 @@
 
 {% block content %}
 
-<h2>{{ team.club_name }} [score] - {{ game.opponent_points }} {{ game.opponent }}</h2>
+<h2>{{ team.club_name }} {{ team_stats.points }} - {{ game.opponent_points }} {{ game.opponent }}</h2>
 
 <h3>Statistiques des joueurs</h3>
-{% for stat in stats %}
+{% for stat in players_stats %}
     {{ stat.player.first_name }} {{ stat.player.last_name }}:
     <br>
     {{ stat.points }} points | tirs réussis {{ stat.field_goals_made }}  | tirs tentés {{ stat.field_goals_attempted }} | % tirs {{ stat.field_goals_percent }} | 3pts réussis {{ stat.three_points_made }} | 3pts tentés {{ stat.three_points_attempted }} | % 3pts {{ stat.three_points_percent }} | LF réussis {{ stat.free_throws_made }} | LF tentés {{ stat.free_throws_attempted }} | % LF {{ stat.free_throws_percent }} | rebonds off {{ stat.offensive_rebounds }} | rebonds def {{ stat.defensive_rebounds }} | rebonds {{ stat.rebounds }} | passes décisives {{ stat.assists }} | interceptions {{ stat.steals }} | contre {{ stat.blocks }} | b. perdus {{ stat.turnovers }} | fautes {{ stat.fouls }}
@@ -17,7 +17,7 @@
     {% endfor %}
 
 <h3>Statistiques de l'équipe</h3>
-
+{{ team_stats.points }} points | tirs réussis {{ team_stats.field_goals_made }}  | tirs tentés {{ team_stats.field_goals_attempted }} | % tirs {{ team_stats.field_goals_percent }} | 3pts réussis {{ team_stats.three_points_made }} | 3pts tentés {{ team_stats.three_points_attempted }} | % 3pts {{ team_stats.three_points_percent }} | LF réussis {{ team_stats.free_throws_made }} | LF tentés {{ team_stats.free_throws_attempted }} | % LF {{ team_stats.free_throws_percent }} | rebonds off {{ team_stats.offensive_rebounds }} | rebonds def {{ team_stats.defensive_rebounds }} | rebonds {{ team_stats.rebounds }} | passes décisives {{ team_stats.assists }} | interceptions {{ team_stats.steals }} | contre {{ team_stats.blocks }} | b. perdus {{ team_stats.turnovers }} | fautes {{ team_stats.fouls }}
 
 
 {% endblock content %}
