@@ -1,0 +1,22 @@
+
+{% extends 'account/base.html' %}
+
+{% block title %}Matchs{% endblock %}
+
+{% block content %}
+
+{% if games %}
+    {% for game in games %}
+        {{ game.date }}
+        <br>
+        mon équipe score - {{ game.opponent_points }} {{ game.opponent }}
+        <br>
+        {{ game.comment }}
+        <br>
+        <br>
+    {% endfor %}
+{% else %}
+    Tu n'as pas encore de match
+{% endif %}
+
+{% endblock content %}
