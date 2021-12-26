@@ -4,19 +4,19 @@
         "model": "account.profile",
         "pk": 1,
         "fields": {
-            "email": "steve.kerr@django.com",
-            "username": "steve.kerr",
-            "password": "GoldenstateWarriors"
-        }
+            "email": "steve-kerr@django.com",
+            "username": "steve-kerr",
+            "password": "pbkdf2_sha256$320000$bqOJz02socffab3YJ1LEYY$DJZ2jfLX4LSQ5TJdP1VW8FsAw9V2JJHp4Z95nCfOdhI="
+            }
     },
 
     {
         "model": "account.profile",
         "pk": 2,
         "fields": {
-            "email": "frank.vogel@django.com",
-            "username": "frank.vogel",
-            "password": "LosangelesLakers"
-        }
+            "email": "frank-vogel@django.com",
+            "username": "frank-vogel",
+            "password": "pbkdf2_sha256$320000$hgK5M0kUu7e6dlegrXzrRp$2qEBTtT1J93aC9mR6toMFwNPlajXFelXnhllsx2UD4w="
+            }
     }
 ]

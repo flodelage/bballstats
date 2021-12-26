@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
@@ -36,6 +36,12 @@ def teams_list(request):
 
 
 @login_required
-def team_detail(request, team_name):
-    pass
+def team_detail(request, club_name):
+    team = get_object_or_404(Team, club_name=club_name)
+    players = Player.objects.filter(team__pk=team.pk)
+    return render(
+        request,
+        'team/team-detail.html',
+        {'username':request.user.username, 'team': team, 'players': players}
+    )
 

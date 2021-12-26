@@ -9,7 +9,7 @@
 
 {% if teams %}
     {% for team in teams %}
-        {{ team.club_name }}
+        <a href="{% url 'team_detail' team.club_name %}">{{ team.club_name }}</a>
     {% endfor %}
 {% else %}
     <p>Tu n'as pas encore d'équipe</p>
