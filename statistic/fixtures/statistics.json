@@ -114,6 +114,29 @@
         }
     },
 
+    {
+        "model": "statistic.statistic",
+        "pk": 11,
+        "fields": {
+            "minutes": 0,
+            "field_goals_made": 0,
+            "field_goals_attempted": 0,
+            "three_points_made": 0,
+            "three_points_attempted": 0,
+            "free_throws_made": 0,
+            "free_throws_attempted": 0,
+            "offensive_rebounds": 0,
+            "defensive_rebounds": 0,
+            "assists": 0,
+            "steals": 0,
+            "blocks": 0,
+            "turnovers": 0,
+            "fouls": 0,
+            "player": 11,
+            "game": 1
+        }
+    },
+
 
 
 

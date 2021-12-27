@@ -61,6 +61,18 @@
         }
     },
 
+    {
+        "model": "player.player",
+        "pk": 11,
+        "fields": {
+            "first_name": "Andre",
+            "last_name": "Iguodala",
+            "jersey_number": "9",
+            "picture": null,
+            "team": 1
+        }
+    },
+
 
 
 
