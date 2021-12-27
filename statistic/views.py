@@ -19,7 +19,7 @@ def averages(request, username, team_pk):
     players_stats = Statistic.objects.filter(game__pk__in=[game.id for game in games])
 
     team_totals_calculator = TeamTotalsCalculator()
-    team_stats = team_totals_calculator.teams_statistics(players_stats)
+    team_stats = team_totals_calculator.calculate_team_statistics(players_stats)
     team_averages_calculator = TeamAveragesCalculator()
     team_averages = team_averages_calculator.team_averages(team_stats, len(games))
 

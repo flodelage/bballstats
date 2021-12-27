@@ -89,7 +89,7 @@ class Statistic(models.Model):
         3pts and 2pts shots
         """
         try:
-            return round((self.field_goals_made/self.field_goals_attempted) *100, 1)
+            return round((self.field_goals_made / self.field_goals_attempted) *100, 1)
         except ZeroDivisionError:
             return 0.0
 
@@ -100,7 +100,7 @@ class Statistic(models.Model):
         3pts shots
         """
         try:
-            return round((self.three_points_made/self.three_points_attempted) *100, 1)
+            return round((self.three_points_made / self.three_points_attempted) *100, 1)
         except ZeroDivisionError:
             return 0.0
 
@@ -111,7 +111,7 @@ class Statistic(models.Model):
         free throws shots
         """
         try:
-            return round((self.free_throws_made/self.free_throws_attempted) *100, 1)
+            return round((self.free_throws_made / self.free_throws_attempted) *100, 1)
         except ZeroDivisionError:
             return 0.0
 
