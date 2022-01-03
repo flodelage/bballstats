@@ -8,10 +8,16 @@
 {% if games %}
     {% for game in games %}
         <a href="{% url 'game_detail' username team.pk game.pk %}">
-            {{ game.date }}
-            <br>
-            {{ team.club_name }} [score] - {{ game.opponent_points }} {{ game.opponent }}
-            <br>
+            {{ game.date }} - {{ game.place }}
+            {% if game.place == 'home' %}
+                <br>
+                {{ team.club_name }} {{ game.team_points }} - {{ game.opponent_points }} {{ game.opponent }}
+                <br>
+            {% else %}
+                <br>
+                {{ game.opponent }} {{ game.opponent_points }} - {{ game.team_points }} {{ team.club_name }}
+                <br>
+            {% endif %}
             {{ game.comment }}
         </a>
         <br>
