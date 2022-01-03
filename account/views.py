@@ -1,10 +1,11 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.urls import reverse
 
+from .models import Profile
 from .forms import ProfileCreationForm, ProfileChangeForm, ProfileLoginForm
 
 
@@ -108,3 +109,7 @@ def update_password(request, username):
         'account/update-password.html',
         {'username': username}
     )
+
+def account_delete(request, username):
+    get_object_or_404(Profile, username=username).delete()
+    return redirect('home')
