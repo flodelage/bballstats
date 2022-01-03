@@ -33,6 +33,13 @@ class Game(models.Model):
         default='neutral'
     )
 
+    @property
+    def victory(self):  # sourcery skip: boolean-if-exp-identity
+        """
+        Set if team won or not
+        """
+        return True if self.opponent_points < self.team_points else False
+
     # Foreign Key(s):
     team = models.ForeignKey(
         Team,
