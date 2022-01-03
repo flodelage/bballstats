@@ -94,6 +94,13 @@ class Statistic(models.Model):
     )
 
     @property
+    def points(self):
+        """
+        Calculate total points from different shots made
+        """
+        return ((self.field_goals_made - self.three_points_made)*2) + (self.three_points_made*3) + (self.free_throws_made*1)
+
+    @property
     def field_goals_percent(self):
         """
         Calculate field goal percent from

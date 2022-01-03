@@ -11,7 +11,6 @@ from statistic.utils.team_averages_calculator import TeamAveragesCalculator
 from statistic.utils.players_averages_calculator import PlayersAveragesCalculator
 
 
-@login_required
 def averages(request, username, team_pk):
     team = get_object_or_404(Team, pk=team_pk)
     players = Player.objects.filter(team__pk=team_pk)

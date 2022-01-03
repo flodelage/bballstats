@@ -8,9 +8,7 @@ from statistic.models import Statistic
 from statistic.utils.team_totals_calculator import TeamTotalsCalculator
 
 
-@login_required
 def games_list(request, username, team_pk):
-    username = request.user.username
     team = get_object_or_404(Team, pk=team_pk)
     games = Game.objects.filter(team__pk=team_pk)
     return render(
@@ -23,9 +21,7 @@ def games_list(request, username, team_pk):
         }
     )
 
-@login_required
 def game_detail(request, username, team_pk, game_pk):
-    username = request.user.username
     team = get_object_or_404(Team, pk=team_pk)
     game = get_object_or_404(Game, pk=game_pk)
     players_stats = Statistic.objects.filter(game__pk=game_pk)

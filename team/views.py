@@ -29,7 +29,6 @@ def team_create(request, username):
 
 @login_required
 def teams_list(request, username):
-    username = request.user.username
     teams = Team.objects.filter(profile__pk=request.user.pk)
     return render(
         request,
@@ -40,7 +39,6 @@ def teams_list(request, username):
 
 @login_required
 def team_detail(request, username, team_pk):
-    username = request.user.username
     team = get_object_or_404(Team, pk=team_pk)
     players = Player.objects.filter(team__pk=team_pk)
     return render(

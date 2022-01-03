@@ -106,5 +106,5 @@ def update_password(request, username):
     return render(
         request,
         'account/update-password.html',
-        {'profile': profile, 'username': request.user.username}
+        {'username': request.user.username}
     )
