@@ -8,20 +8,25 @@ class Team(models.Model):
         verbose_name='Nom du club',
         max_length=128
     )
+
     city = models.CharField(
         verbose_name='Ville',
         max_length=128
     )
+
     province = models.CharField(
         verbose_name='Département',
         max_length=128
     )
+
     level = models.CharField(
         verbose_name='Niveau',
         max_length=128
     )
+
     picture = models.ImageField(
         verbose_name='Photo',
+        blank=True,
         null=True
     )
 

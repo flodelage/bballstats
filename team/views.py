@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
 from player.models import Player
+from account.models import Profile
 from .models import Team
 from .forms import TeamCreateForm
 
@@ -13,12 +14,19 @@ def team_create(request, username):
     """
     Allow a user to create team
     """
-    username = request.user.username
     team_form = TeamCreateForm()
     if request.method == 'POST':
         team_form = TeamCreateForm(request.POST)
         if team_form.is_valid():
-            team_form.save()
+            team = Team(
+                club_name=team_form.cleaned_data['club_name'],
+                city=team_form.cleaned_data['city'],
+                province=team_form.cleaned_data['province'],
+                level=team_form.cleaned_data['level'],
+                picture=team_form.cleaned_data['picture']
+            )
+            team.profile = get_object_or_404(Profile, pk=request.user.id)
+            team.save()
             return redirect('home')
     return render(
         request,

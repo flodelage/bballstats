@@ -76,7 +76,7 @@ def account(request, username):
     return render(
         request,
         'account/account.html',
-        {'profile': request.user, 'username': request.user.username}
+        {'profile': request.user, 'username': username}
     )
 
 
@@ -87,14 +87,14 @@ def update_informations(request, username):
         if update_form.is_valid():
             update_form.save()
             return redirect(
-                reverse('account', kwargs={'username': request.user.username})
+                reverse('account', kwargs={'username': username})
             )
     else:
         update_form = ProfileChangeForm(instance=request.user)
     return render(
         request,
         'account/update-informations.html',
-        {'update_form': update_form, 'username': request.user.username}
+        {'update_form': update_form, 'username': username}
     )
 
 
@@ -106,5 +106,5 @@ def update_password(request, username):
     return render(
         request,
         'account/update-password.html',
-        {'username': request.user.username}
+        {'username': username}
     )
