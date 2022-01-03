@@ -10,6 +10,7 @@
 {{ team.city }}
 {{ team.province }}
 {{ team.level }}
+<a href="{% url 'team_delete' username team.pk %}"><h3>Supprimer l'équipe</h3></a>
 
 <a href="{% url 'players_list' username team.pk %}"><h3>Modifier joueurs</h3></a>
 
