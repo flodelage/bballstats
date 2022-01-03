@@ -6,6 +6,8 @@
             "date": "2021-12-26",
             "opponent": "Phoenix Suns",
             "opponent_points": 123,
+            "team_points": 101,
+            "place": "away",
             "comment": "Match difficile. Trop de maladresse.  On doit faire plus d'efforts sur le repli défensif",
             "team": 1
         }
@@ -17,6 +19,8 @@
             "date": "2021-12-26",
             "opponent": "Portland Blazers",
             "opponent_points": 89,
+            "team_points": 107,
+            "place": "home",
             "comment": "Toujours beaucoup de maladresse, mais cette fois notre rigueur défensive nous a sauvé",
             "team": 1
         }

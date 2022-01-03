@@ -1,3 +1,4 @@
+# sourcery skip: boolean-if-exp-identity
 """
 Django settings for bballstats project.
 
@@ -24,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.environ.get('ENV', 'development') == 'production' else True
+DEBUG = False if os.environ.get('ENV') == 'production' else True
 
 ALLOWED_HOSTS = []
 
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'game',
     'statistic',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

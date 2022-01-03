@@ -16,6 +16,7 @@
             "steals": 1,
             "blocks": 0,
             "turnovers": 3,
+            "did_he_play": true,
             "fouls": 4,
             "player": 1,
             "game": 1
@@ -39,6 +40,7 @@
             "steals": 2,
             "blocks": 1,
             "turnovers": 2,
+            "did_he_play": true,
             "fouls": 5,
             "player": 2,
             "game": 1
@@ -62,6 +64,7 @@
             "steals": 1,
             "blocks": 1,
             "turnovers": 2,
+            "did_he_play": true,
             "fouls": 2,
             "player": 3,
             "game": 1
@@ -85,6 +88,7 @@
             "steals": 1,
             "blocks": 1,
             "turnovers": 3,
+            "did_he_play": true,
             "fouls": 4,
             "player": 4,
             "game": 1
@@ -108,6 +112,7 @@
             "steals": 1,
             "blocks": 1,
             "turnovers": 1,
+            "did_he_play": true,
             "fouls": 2,
             "player": 5,
             "game": 1
@@ -157,6 +162,7 @@
             "steals": 1,
             "blocks": 0,
             "turnovers": 4,
+            "did_he_play": true,
             "fouls": 3,
             "player": 1,
             "game": 2
@@ -180,6 +186,7 @@
             "steals": 1,
             "blocks": 0,
             "turnovers": 4,
+            "did_he_play": true,
             "fouls": 2,
             "player": 2,
             "game": 2
@@ -203,6 +210,7 @@
             "steals": 0,
             "blocks": 0,
             "turnovers": 3,
+            "did_he_play": true,
             "fouls": 3,
             "player": 3,
             "game": 2
@@ -226,6 +234,7 @@
             "steals": 2,
             "blocks": 0,
             "turnovers": 2,
+            "did_he_play": true,
             "fouls": 5,
             "player": 4,
             "game": 2
@@ -249,6 +258,7 @@
             "steals": 0,
             "blocks": 0,
             "turnovers": 2,
+            "did_he_play": true,
             "fouls": 2,
             "player": 5,
             "game": 2
