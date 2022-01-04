@@ -7,6 +7,7 @@
 
 <h2>{{ team.club_name }} {{ team_stats.points }} - {{ game.opponent_points }} {{ game.opponent }}</h2>
 <a href="{% url 'game_update' username team.pk game.pk %}">Modifier</a>
+<a href="{% url 'game_delete' username team.pk game.pk %}">Supprimer</a>
 
 <h3>Statistiques des joueurs</h3>
 {% for stat in players_stats %}

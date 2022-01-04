@@ -38,7 +38,7 @@ def game_update(request, username, team_pk, game_pk):
         update_form = GameUpdateForm(request.POST, instance=game)
         if update_form.is_valid():
             update_form.save()
-            return redirect(reverse('team_detail', kwargs={'username': username, 'team_pk': team_pk}))
+            return redirect(reverse('game_detail', kwargs={'username': username, 'team_pk': team_pk, 'game_pk': game_pk}))
     else:
         update_form = GameUpdateForm(instance=game)
     return render(
@@ -50,6 +50,5 @@ def game_update(request, username, team_pk, game_pk):
 
 @login_required
 def game_delete(request, username, team_pk, game_pk):
-    pass
-    # get_object_or_404(Player, pk=player_pk).delete()
-    # return redirect(reverse('players_list', kwargs={'username': username, 'team_pk': team_pk}))
+    get_object_or_404(Game, pk=game_pk).delete()
+    return redirect(reverse('team_detail', kwargs={'username': username, 'team_pk': team_pk}))
