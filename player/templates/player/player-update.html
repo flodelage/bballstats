@@ -1,11 +1,11 @@
 
 {% extends 'account/base.html' %}
 
-{% block title %}Modification du compte{% endblock %}
+{% block title %}Modification joueur{% endblock %}
 
 {% block content %}
 
-<h2>Modifier les informations</h2>
+<h2>Modifier le joueur {{ player.first_name }} {{ player.last_name }}</h2>
 
 <form method="post">
     {% csrf_token %}

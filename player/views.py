@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
-from .forms import PlayerCreateForm
+from .forms import PlayerCreateForm, PlayerUpdateForm
 from team.models import Team
 from .models import Player
 
@@ -47,6 +47,23 @@ def players_list(request, username, team_pk):
             'players': players,
             'team_pk': team_pk
         }
+    )
+
+
+@login_required
+def player_update(request, username, team_pk, player_pk):
+    player = get_object_or_404(Player, pk=player_pk)
+    if request.method == 'POST':
+        update_form = PlayerUpdateForm(request.POST, instance=player)
+        if update_form.is_valid():
+            update_form.save()
+            return redirect(reverse('players_list', kwargs={'username': username, 'team_pk': team_pk}))
+    else:
+        update_form = PlayerUpdateForm(instance=player)
+    return render(
+        request,
+        'player/player-update.html',
+        {'update_form': update_form, 'username': username}
     )
 
 
