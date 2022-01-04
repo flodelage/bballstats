@@ -30,6 +30,7 @@ def averages(request, username, team_pk):
         'statistic/averages.html',
         {
             'username': username,
+            'games': games,
             'team_averages': team_averages,
             'players_stats': players_stats_with_averages
         }

@@ -3,8 +3,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
-from player.models import Player
 from account.models import Profile
+from player.models import Player
+from game.models import Game
 from .models import Team
 from .forms import TeamCreateForm
 
@@ -49,10 +50,16 @@ def teams_list(request, username):
 def team_detail(request, username, team_pk):
     team = get_object_or_404(Team, pk=team_pk)
     players = Player.objects.filter(team__pk=team_pk)
+    games = Game.objects.filter(team__pk=team_pk)
     return render(
         request,
         'team/team-detail.html',
-        {'username':username, 'team': team, 'players': players}
+        {
+            'username':username,
+            'team': team,
+            'players': players,
+            'games': games
+        }
     )
 
 
