@@ -13,7 +13,7 @@
         {{player.picture}} {{player.first_name}} {{player.last_name}} #{{player.jersey_number}}
         <br>
         <a href="">Modifier</a>
-        <a href="player_delete">Supprimer</a>
+        <a href="{% url 'player_delete' username team_pk player.pk %}">Supprimer</a>
         <br><br>
     {% endfor %}
 {% else %}

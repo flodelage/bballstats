@@ -45,6 +45,12 @@ def players_list(request, username, team_pk):
         {
             'username': username,
             'players': players,
-            'team_pk': team.pk
+            'team_pk': team_pk
         }
     )
+
+
+@login_required
+def player_delete(request, username, team_pk, player_pk):
+    get_object_or_404(Player, pk=player_pk).delete()
+    return redirect(reverse('players_list', kwargs={'username': username, 'team_pk': team_pk}))
