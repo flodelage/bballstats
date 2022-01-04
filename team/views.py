@@ -7,6 +7,9 @@ from account.models import Profile
 from player.models import Player
 from game.models import Game
 from .models import Team
+from statistic.models import Statistic
+from statistic.utils.players_averages_calculator import PlayersAveragesCalculator
+from statistic.utils.team_leaders_calculator import TeamLeadersCalculator
 from .forms import TeamCreateForm
 
 
@@ -50,17 +53,26 @@ def teams_list(request, username):
 
 def team_detail(request, username, team_pk):
     team = get_object_or_404(Team, pk=team_pk)
-    players = Player.objects.filter(team__pk=team_pk)
     games = Game.objects.filter(team__pk=team_pk)
+    context = {
+        'username':username,
+        'team': team,
+        'games': games
+    }
+    if games:
+        players = Player.objects.filter(team__pk=team_pk)
+        players_stats = Statistic.objects.filter(game__pk__in=[game.id for game in games])
+
+        players_averages_calculator = PlayersAveragesCalculator()
+        players_stats_with_averages = players_averages_calculator.final_stats(players, players_stats)
+
+        team_leaders_calculator = TeamLeadersCalculator()
+        team_leaders = team_leaders_calculator.set_team_leaders(players_stats_with_averages)
+        context['team_leaders'] = team_leaders
     return render(
         request,
         'team/team-detail.html',
-        {
-            'username':username,
-            'team': team,
-            'players': players,
-            'games': games
-        }
+        context
     )
 
 

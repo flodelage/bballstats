@@ -16,7 +16,7 @@
     {
         "model": "game.game",
         "pk": 2, "fields": {
-            "date": "2021-12-26",
+            "date": "2021-12-28",
             "opponent": "Portland Blazers",
             "opponent_points": 89,
             "team_points": 92,

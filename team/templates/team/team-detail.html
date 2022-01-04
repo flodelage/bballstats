@@ -10,10 +10,21 @@
 {{ team.city }}
 {{ team.province }}
 {{ team.level }}
+{{ team.genre }}
+{{ team.season }}
 <a href="{% url 'team_update' username team.pk %}"><h3>Modifier équipe</h3></a>
 
 <a href="{% url 'team_delete' username team.pk %}"><h3>Supprimer l'équipe</h3></a> <br>
 
+
+{% if games %}
+    <h3>Leaders</h3>
+    {% for leader in team_leaders %}
+        {{ leader.player.picture }}
+        {{ leader.player.first_name }} {{ leader.player.last_name }}
+        {{ leader.value }} {{ leader.stat }}
+    {% endfor %}
+{% endif %}
 
 <a href="{% url 'players_list' username team.pk %}"><h3>Les joueurs</h3></a>
 {% if games %}
@@ -37,6 +48,9 @@
 {% endfor %}
 
 {% endif %}
+
+
+{{players_stats_with_averages}}
 
 
 
