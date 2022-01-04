@@ -8,6 +8,8 @@
             "city": "Oakland",
             "province": "California",
             "level": "nba",
+            "genre": "masculine",
+            "season": "2021-2022",
             "picture":null,
             "profile": 1
         }
@@ -22,6 +24,8 @@
             "city": "Los Angeles",
             "province": "California",
             "level": "nba",
+            "genre": "masculine",
+            "season": "2021-2022",
             "picture":null,
             "profile": 1
         }
