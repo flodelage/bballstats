@@ -10,15 +10,16 @@
 {{ team.city }}
 {{ team.province }}
 {{ team.level }}
-<a href="{% url 'team_delete' username team.pk %}"><h3>Supprimer l'équipe</h3></a>
+
+<a href="{% url 'games_list' username team.pk %}"><h3>Les matchs</h3></a>
+
+<a href="{% url 'averages' username team.pk %}"><h3>Statistiques de la saison</h3></a>
 
 <a href="{% url 'players_list' username team.pk %}"><h3>Modifier joueurs</h3></a>
 
 <a href="{% url 'players_list' username team.pk %}"><h3>Modifier équipe</h3></a>
 
-<a href="{% url 'games_list' username team.pk %}"><h3>Les matchs</h3></a>
-
-<a href="{% url 'averages' username team.pk %}"><h3>Statistiques de la saison</h3></a>
+<a href="{% url 'team_delete' username team.pk %}"><h3>Supprimer l'équipe</h3></a>
 
 
 {% endblock content %}

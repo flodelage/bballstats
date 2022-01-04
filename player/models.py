@@ -10,16 +10,20 @@ class Player(models.Model):
         verbose_name='Prénom',
         max_length=128
     )
+
     last_name = models.CharField(
         verbose_name='Nom de famille',
         max_length=128
     )
+
     jersey_number = models.CharField(
         verbose_name='Numéro de maillot',
         max_length=2
     )
+
     picture = models.ImageField(
         verbose_name='Photo',
+        blank=True,
         null=True
     )
 

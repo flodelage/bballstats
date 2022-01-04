@@ -8,8 +8,8 @@
 <h2>Modifier les informations</h2>
 
 <form method="post">
-    {{ update_form.as_p }}
     {% csrf_token %}
+    {{ update_form.as_p }}
     <button type="submit">Modifier</button>
 </form>
 

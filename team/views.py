@@ -27,7 +27,7 @@ def team_create(request, username):
             )
             team.profile = get_object_or_404(Profile, pk=request.user.id)
             team.save()
-            return redirect(reverse('teams_list', kwargs={'username': username}))
+            return redirect(reverse('players_list', kwargs={'username': username, 'team_pk': team.pk}))
     return render(
         request,
         'team/team-create.html',
@@ -54,6 +54,7 @@ def team_detail(request, username, team_pk):
         'team/team-detail.html',
         {'username':username, 'team': team, 'players': players}
     )
+
 
 @login_required
 def team_delete(request, username, team_pk):

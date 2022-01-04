@@ -7,8 +7,19 @@
 
 <h2>Les joueurs</h2>
 
-{% for player in players %}
-    {{player.first_name}} {{player.last_name}}
-{% endfor %}
+
+{% if players %}
+    {% for player in players %}
+        {{player.picture}} {{player.first_name}} {{player.last_name}} #{{player.jersey_number}}
+        <br>
+        <a href="">Modifier</a>
+        <a href="player_delete">Supprimer</a>
+        <br><br>
+    {% endfor %}
+{% else %}
+    <p>Tu n'as pas encore de joueur</p>
+{% endif %}
+
+<a href="{% url 'player_create' username team_pk %}"><h3>Créer un joueur</h3></a>
 
 {% endblock content %}

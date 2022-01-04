@@ -110,6 +110,8 @@ def update_password(request, username):
         {'username': username}
     )
 
+
+@login_required
 def account_delete(request, username):
     get_object_or_404(Profile, username=username).delete()
     return redirect('home')
