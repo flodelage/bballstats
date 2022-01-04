@@ -21,13 +21,13 @@ class Team(models.Model):
     )
 
     GENRE_CHOICES = [
-        ('WOMEN', 'féminine'),
-        ('MEN', 'masculine')
+        ('féminine', 'féminine'),
+        ('masculine', 'masculine')
     ]
     genre = models.CharField(
-        max_length=8,
+        max_length=9,
         choices=GENRE_CHOICES,
-        default='WOMEN'
+        default='féminine'
     )
 
     level = models.CharField(
@@ -35,18 +35,14 @@ class Team(models.Model):
         max_length=128
     )
 
-    years_list = [
-        year for year in range(datetime.datetime.now().year-1, datetime.datetime.now().year+2)
-    ]
     SEASON_CHOICES = [
-        ('Y-1', f"{years_list[0]}-{years_list[0]+1}"),
-        ('Y', f"{years_list[1]}-{years_list[1]+1}"),
-        ('Y+1', f"{years_list[2]}-{years_list[2]+1}")
+        (f'{year}-{year+1}', f'{year}-{year+1}')
+        for year in range(datetime.datetime.now().year-1, datetime.datetime.now().year+2)
     ]
     season = models.CharField(
         max_length=9,
         choices=SEASON_CHOICES,
-        default='Y'
+        default=SEASON_CHOICES[1][0]
     )
 
     picture = models.ImageField(

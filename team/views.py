@@ -24,6 +24,8 @@ def team_create(request, username):
                 city=team_form.cleaned_data['city'],
                 province=team_form.cleaned_data['province'],
                 level=team_form.cleaned_data['level'],
+                genre=team_form.cleaned_data['genre'],
+                season=team_form.cleaned_data['season'],
                 picture=team_form.cleaned_data['picture']
             )
             team.profile = get_object_or_404(Profile, pk=request.user.id)

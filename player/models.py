@@ -16,9 +16,13 @@ class Player(models.Model):
         max_length=128
     )
 
+    JERSEY_CHOICES = [
+        (str(number), str(number)) for number in range(0, 100)
+    ]
     jersey_number = models.CharField(
-        verbose_name='Numéro de maillot',
-        max_length=2
+        max_length=2,
+        choices=JERSEY_CHOICES,
+        default='1'
     )
 
     picture = models.ImageField(
