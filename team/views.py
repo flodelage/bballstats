@@ -64,6 +64,23 @@ def team_detail(request, username, team_pk):
 
 
 @login_required
+def team_update(request, username, team_pk):
+    team = get_object_or_404(Team, pk=team_pk)
+    if request.method == 'POST':
+        update_form = TeamCreateForm(request.POST, instance=team)
+        if update_form.is_valid():
+            update_form.save()
+            return redirect(reverse('teams_list', kwargs={'username': username}))
+    else:
+        update_form = TeamCreateForm(instance=team)
+    return render(
+        request,
+        'team/team-update.html',
+        {'update_form': update_form, 'username': username, 'team': team}
+    )
+
+
+@login_required
 def team_delete(request, username, team_pk):
     get_object_or_404(Team, pk=team_pk).delete()
     return redirect(reverse('teams_list', kwargs={'username': username}))
