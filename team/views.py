@@ -48,7 +48,6 @@ def teams_list(request, username):
     )
 
 
-@login_required
 def team_detail(request, username, team_pk):
     team = get_object_or_404(Team, pk=team_pk)
     players = Player.objects.filter(team__pk=team_pk)

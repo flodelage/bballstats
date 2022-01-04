@@ -20,6 +20,7 @@ class Player(models.Model):
         (str(number), str(number)) for number in range(0, 100)
     ]
     jersey_number = models.CharField(
+        verbose_name="Numéro",
         max_length=2,
         choices=JERSEY_CHOICES,
         default='1'

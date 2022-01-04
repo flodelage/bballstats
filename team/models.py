@@ -21,13 +21,14 @@ class Team(models.Model):
     )
 
     GENRE_CHOICES = [
-        ('féminine', 'féminine'),
-        ('masculine', 'masculine')
+        ('Femmes', 'Femmes'),
+        ('Hommes', 'Hommes')
     ]
     genre = models.CharField(
+        verbose_name="Sexe",
         max_length=9,
         choices=GENRE_CHOICES,
-        default='féminine'
+        default='Femmes'
     )
 
     level = models.CharField(
@@ -40,6 +41,7 @@ class Team(models.Model):
         for year in range(datetime.datetime.now().year-1, datetime.datetime.now().year+2)
     ]
     season = models.CharField(
+        verbose_name='Saison',
         max_length=9,
         choices=SEASON_CHOICES,
         default=SEASON_CHOICES[1][0]

@@ -10,23 +10,35 @@
 {{ team.city }}
 {{ team.province }}
 {{ team.level }}
-
-
-{% if games %}
-    <a href="{% url 'games_list' username team.pk %}"><h3>Les matchs</h3></a>
-
-    <a href="{% url 'averages' username team.pk %}"><h3>Statistiques de la saison</h3></a>
-{% else %}
-    <h3>Les matchs</h3>
-
-    <h3>Statistiques de la saison</h3>
-{% endif %}
-
-<a href="{% url 'players_list' username team.pk %}"><h3>Les joueurs</h3></a>
-
 <a href="{% url 'team_update' username team.pk %}"><h3>Modifier équipe</h3></a>
 
-<a href="{% url 'team_delete' username team.pk %}"><h3>Supprimer l'équipe</h3></a>
+<a href="{% url 'team_delete' username team.pk %}"><h3>Supprimer l'équipe</h3></a> <br>
+
+
+<a href="{% url 'players_list' username team.pk %}"><h3>Les joueurs</h3></a>
+{% if games %}
+    <a href="{% url 'averages' username team.pk %}"><h3>Statistiques de la saison</h3></a> <br>
+    {% for game in games %}
+    <a href="{% url 'game_detail' username team.pk game.pk %}">
+        {{ game.date }} - {{ game.place }}
+        {% if game.place == 'home' %}
+            <br>
+            {{ team.club_name }} {{ game.team_points }} - {{ game.opponent_points }} {{ game.opponent }}
+            <br>
+        {% else %}
+            <br>
+            {{ game.opponent }} {{ game.opponent_points }} - {{ game.team_points }} {{ team.club_name }}
+            <br>
+        {% endif %}
+        {{ game.comment }}
+    </a>
+    <br>
+    <br>
+{% endfor %}
+
+{% endif %}
+
+
 
 
 {% endblock content %}

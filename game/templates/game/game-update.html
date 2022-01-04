@@ -1,0 +1,16 @@
+
+{% extends 'account/base.html' %}
+
+{% block title %}Modification match{% endblock %}
+
+{% block content %}
+
+<h2>Modifier le match: {{ team.club_name }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ update_form.as_p }}
+    <button type="submit">Modifier</button>
+</form>
+
+{% endblock content %}
