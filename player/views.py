@@ -38,7 +38,7 @@ def player_create(request, username, team_pk):
 @login_required
 def players_list(request, username, team_pk):
     team = get_object_or_404(Team, pk=team_pk)
-    players = Player.objects.filter(team__pk=team_pk)
+    players = Player.objects.filter(team__pk=team_pk).order_by('last_name')
     return render(
         request,
         'player/players-list.html',

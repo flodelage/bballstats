@@ -43,7 +43,7 @@ def team_create(request, username):
 
 @login_required
 def teams_list(request, username):
-    teams = Team.objects.filter(profile__pk=request.user.pk)
+    teams = Team.objects.filter(profile__pk=request.user.pk).order_by('-season')
     return render(
         request,
         'team/teams-list.html',
@@ -101,7 +101,7 @@ def team_delete(request, username, team_pk):
 
 @login_required
 def team_select(request, username):
-    teams = Team.objects.filter(profile__pk=request.user.pk)
+    teams = Team.objects.filter(profile__pk=request.user.pk).order_by('season')
     if teams:
         return render(
             request,
