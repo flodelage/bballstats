@@ -30,12 +30,13 @@
         <ul>
             {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'account' username %}">Compte</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'teams_list' username %}">Équipes</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Déconnexion</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'team_select' username %}"><i class="fas fa-basketball-ball"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'teams_list' username %}"><i class="fas fa-users"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'account' username %}"><i class="fas fa-user"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a></li>
             {% else %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Connexion</i></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i></a></li>
             {% endif %}
         </ul>
         {% block content %}

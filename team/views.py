@@ -97,3 +97,16 @@ def team_update(request, username, team_pk):
 def team_delete(request, username, team_pk):
     get_object_or_404(Team, pk=team_pk).delete()
     return redirect(reverse('teams_list', kwargs={'username': username}))
+
+
+@login_required
+def team_select(request, username):
+    teams = Team.objects.filter(profile__pk=request.user.pk)
+    if teams:
+        return render(
+            request,
+            'team/team-select.html',
+            {'username': username, 'teams': teams}
+        )
+    else:
+        return redirect(reverse('team_create', kwargs={'username': username}))

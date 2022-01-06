@@ -4,10 +4,33 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 
 from .models import Game
-from.forms import GameUpdateForm
+from.forms import GameCreateForm, GameUpdateForm
 from team.models import Team
 from statistic.models import Statistic
 from statistic.utils.team_totals_calculator import TeamTotalsCalculator
+
+
+@login_required
+def game_create(request, username, team_pk):
+    form = GameCreateForm()
+    if request.method == 'POST':
+        form = GameCreateForm(request.POST)
+        if form.is_valid():
+            game = Game(
+                opponent = form.cleaned_data['opponent'],
+                place = form.cleaned_data['place']
+            )
+            print(get_object_or_404(Team, pk=team_pk))
+            game.team = get_object_or_404(Team, pk=team_pk)
+            game.save()
+    return render(
+        request,
+        'game/game-create.html',
+        {
+            'form': form,
+            'username': username,
+        }
+    )
 
 
 def game_detail(request, username, team_pk, game_pk):

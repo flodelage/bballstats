@@ -41,3 +41,9 @@ class Player(models.Model):
 
     def __str__(self):
         return f"Joueur {self.pk}/ {self.first_name} {self.last_name} #{self.jersey_number}\nMembre de l'équipe: {self.team.club_name}"
+
+    class Meta:
+        unique_together = (
+            ('team', 'first_name', 'last_name'),
+            ('team', 'jersey_number')
+        )

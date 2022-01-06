@@ -6,7 +6,8 @@ from team.models import Team
 class Game(models.Model):
     date = models.DateField(
         verbose_name="Date",
-        auto_now_add=True)
+        auto_now_add=True
+    )
 
     opponent = models.CharField(
         verbose_name="Adversaire",
