@@ -9,6 +9,7 @@ django-dotenv = "*"
 psycopg2 = "*"
 psycopg2-binary = "*"
 pillow = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

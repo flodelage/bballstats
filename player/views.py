@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.db import IntegrityError
 
 from .forms import PlayerCreateForm
 from team.models import Team
@@ -22,8 +23,11 @@ def player_create(request, username, team_pk):
                 picture=player_form.cleaned_data['picture']
             )
             player.team = get_object_or_404(Team, pk=team_pk)
-            player.save()
-            return redirect(reverse('players_list', kwargs={'username': username, 'team_pk': team_pk}))
+            try:
+                player.save()
+                return redirect(reverse('players_list', kwargs={'username': username, 'team_pk': team_pk}))
+            except IntegrityError:
+                return render(request, 'player/player-create.html', locals())
     return render(
         request,
         'player/player-create.html',
