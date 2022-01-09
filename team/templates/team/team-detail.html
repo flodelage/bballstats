@@ -28,7 +28,7 @@
 
 <a href="{% url 'players_list' username team.pk %}"><h3>Les joueurs</h3></a>
 {% if games %}
-    <a href="{% url 'averages' username team.pk %}"><h3>Statistiques de la saison</h3></a> <br>
+    <a href="{% url 'players_averages' username team.pk %}"><h3>Statistiques de la saison</h3></a> <br>
     {% for game in games %}
     <a href="{% url 'game_detail' username team.pk game.pk %}">
         {{ game.date }} - {{ game.place }}

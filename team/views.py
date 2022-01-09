@@ -53,7 +53,7 @@ def teams_list(request, username):
 
 def team_detail(request, username, team_pk):
     team = get_object_or_404(Team, pk=team_pk)
-    games = Game.objects.filter(team__pk=team_pk)
+    games = Game.objects.filter(team__pk=team_pk).order_by('-date')
     context = {
         'username':username,
         'team': team,

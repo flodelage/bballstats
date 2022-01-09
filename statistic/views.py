@@ -11,9 +11,27 @@ from statistic.utils.team_averages_calculator import TeamAveragesCalculator
 from statistic.utils.players_averages_calculator import PlayersAveragesCalculator
 
 
-def averages(request, username, team_pk):
-    team = get_object_or_404(Team, pk=team_pk)
+def players_averages(request, username, team_pk):
     players = Player.objects.filter(team__pk=team_pk)
+    games = Game.objects.filter(team__pk=team_pk)
+    players_stats = Statistic.objects.filter(game__pk__in=[game.id for game in games])
+
+    players_averages_calculator = PlayersAveragesCalculator()
+    players_stats_with_averages = players_averages_calculator.final_stats(players, players_stats)
+
+    return render(
+        request,
+        'statistic/players-averages.html',
+        {
+            'username': username,
+            'team_pk': team_pk,
+            'games': games,
+            'players_stats': players_stats_with_averages
+        }
+    )
+
+
+def team_averages(request, username, team_pk):
     games = Game.objects.filter(team__pk=team_pk)
     players_stats = Statistic.objects.filter(game__pk__in=[game.id for game in games])
 
@@ -22,16 +40,13 @@ def averages(request, username, team_pk):
     team_averages_calculator = TeamAveragesCalculator()
     team_averages = team_averages_calculator.team_averages(team_stats, len(games))
 
-    players_averages_calculator = PlayersAveragesCalculator()
-    players_stats_with_averages = players_averages_calculator.final_stats(players, players_stats)
-
     return render(
         request,
-        'statistic/averages.html',
+        'statistic/team-averages.html',
         {
             'username': username,
+            'team_pk': team_pk,
             'games': games,
-            'team_averages': team_averages,
-            'players_stats': players_stats_with_averages
+            'team_averages': team_averages
         }
     )

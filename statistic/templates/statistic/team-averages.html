@@ -1,0 +1,86 @@
+
+{% extends 'account/base.html' %}
+
+{% block title %}Statistiques moyennes de l'équipe{% endblock %}
+
+{% block content %}
+
+<h2>Statistiques moyennes</h2>
+
+<p>Statistiques de l'équipe</p>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="{% url 'players_averages' username team_pk %}">Joueurs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Equipe</a>
+    </li>
+</ul>
+<table class="table">
+    <thead class=".thead-dark">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Pt</th>
+        <th scope="col">Rbo</th>
+        <th scope="col">Rbd</th>
+        <th scope="col">Rbt</th>
+        <th scope="col">Pd</th>
+        <th scope="col">Int</th>
+        <th scope="col">Ctr</th>
+        <th scope="col">Bp</th>
+        <th scope="col">Fp</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{ p_stats.player.first_name }} {{ p_stats.player.last_name }}</th>
+            <td>{{ team_averages.points_avg }}</td>
+            <td>{{ team_averages.offensive_rebounds_avg }}</td>
+            <td>{{ team_averages.defensive_rebounds_avg }}</td>
+            <td>{{ team_averages.rebounds_avg }}</td>
+            <td>{{ team_averages.assists_avg }}</td>
+            <td>{{ team_averages.steals_avg }}</td>
+            <td>{{ team_averages.blocks_avg }}</td>
+            <td>{{ team_averages.turnovers_avg }}</td>
+            <td>{{ team_averages.fouls_avg }}</td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p>Statistiques de l'équipe aux tirs</p>
+  <table class="table">
+    <thead class=".thead-dark">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Pt</th>
+        <th scope="col">Tm</th>
+        <th scope="col">Tr</th>
+        <th scope="col">T%</th>
+        <th scope="col">3Tm</th>
+        <th scope="col">3Tr</th>
+        <th scope="col">3T%</th>
+        <th scope="col">Lfm</th>
+        <th scope="col">Lfr</th>
+        <th scope="col">Lf%</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <th scope="row">{{ p_stats.player.first_name }} {{ p_stats.player.last_name }}</th>
+          <td>{{ team_averages.points_avg }}</td>
+          <td>{{ team_averages.field_goals_made_avg }}</td>
+          <td>{{ team_averages.field_goals_attempted_avg }}</td>
+          <td>{{ team_averages.field_goals_percent }}</td>
+          <td>{{ team_averages.three_points_made_avg }}</td>
+          <td>{{ team_averages.three_points_attempted_avg }}</td>
+          <td>{{ team_averages.three_points_percent }}</td>
+          <td>{{ team_averages.free_throws_made_avg }}</td>
+          <td>{{ team_averages.free_throws_attempted_avg }}</td>
+          <td>{{ team_averages.free_throws_percent }}</td>
+          <td>{{ p_stats.stats_averages.free_throws_percent }}</td>
+        </tr>
+    </tbody>
+  </table>
+{% endblock content %}
+
+
