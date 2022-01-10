@@ -4,6 +4,8 @@ from django.conf import settings
 
 from team.models import Team
 
+from cloudinary.models import CloudinaryField
+
 
 class Player(models.Model):
     first_name = models.CharField(
@@ -26,10 +28,10 @@ class Player(models.Model):
         default='1'
     )
 
-    picture = models.ImageField(
+    picture = CloudinaryField(
         verbose_name='Photo',
-        blank=True,
-        null=True
+        null=True,
+        blank=True
     )
 
     # Foreign Key(s):

@@ -10,7 +10,10 @@
 
 {% if players %}
     {% for player in players %}
-        {{player.picture}} {{player.first_name}} {{player.last_name}} #{{player.jersey_number}}
+        {% if player.picture %}
+            <img src="{{ player.picture.url }}" width="150", height="150" alt="player-picture">
+        {% endif %}
+        {{ player.first_name }} {{ player.last_name }} #{{ player.jersey_number }}
         <br>
         <a href="{% url 'player_update' username team_pk player.pk %}">Modifier</a>
         <a href="{% url 'player_delete' username team_pk player.pk %}">Supprimer</a>

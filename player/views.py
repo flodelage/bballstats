@@ -14,7 +14,7 @@ from .models import Player
 def player_create(request, username, team_pk):
     player_form = PlayerCreateForm()
     if request.method == 'POST':
-        player_form = PlayerCreateForm(request.POST)
+        player_form = PlayerCreateForm(request.POST, request.FILES)
         if player_form.is_valid():
             player = Player(
                 first_name=player_form.cleaned_data['first_name'],
@@ -58,7 +58,7 @@ def players_list(request, username, team_pk):
 def player_update(request, username, team_pk, player_pk):
     player = get_object_or_404(Player, pk=player_pk)
     if request.method == 'POST':
-        update_form = PlayerCreateForm(request.POST, instance=player)
+        update_form = PlayerCreateForm(request.POST, request.FILES, instance=player)
         if update_form.is_valid():
             update_form.save()
             return redirect(reverse('players_list', kwargs={'username': username, 'team_pk': team_pk}))
