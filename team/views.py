@@ -80,7 +80,7 @@ def team_detail(request, username, team_pk):
 def team_update(request, username, team_pk):
     team = get_object_or_404(Team, pk=team_pk)
     if request.method == 'POST':
-        update_form = TeamCreateForm(request.POST, instance=team)
+        update_form = TeamCreateForm(request.POST, request.FILES, instance=team)
         if update_form.is_valid():
             update_form.save()
             return redirect(reverse('teams_list', kwargs={'username': username}))

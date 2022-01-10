@@ -7,7 +7,7 @@
 
 <h2>Modifier l'équipe: {{ team.club_name }}</h2>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ update_form.as_p }}
     <button type="submit">Modifier</button>

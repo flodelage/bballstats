@@ -50,7 +50,7 @@ class Team(models.Model):
     )
 
     picture = CloudinaryField(
-        'Photo',
+        verbose_name='Photo',
         null=True,
         blank=True
     )
