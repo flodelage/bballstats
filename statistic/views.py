@@ -14,11 +14,20 @@ from statistic.utils.players_averages_calculator import PlayersAveragesCalculato
 def players_averages(request, username, team_pk):
     players = Player.objects.filter(team__pk=team_pk)
     games = Game.objects.filter(team__pk=team_pk)
-    players_stats = Statistic.objects.filter(game__pk__in=[game.id for game in games])
+    players_stats = Statistic.objects.filter(
+        game__pk__in=[game.id for game in games]
+    )
 
     players_averages_calculator = PlayersAveragesCalculator()
-    players_stats_with_averages = players_averages_calculator.final_stats(players, players_stats)
+    players_stats_with_averages = players_averages_calculator.final_stats(
+        players, players_stats
+    )
 
+    players_stats_with_averages = sorted(
+        players_stats_with_averages,
+        key=lambda stats: stats['stats_averages']['points_avg'],
+        reverse=True
+    )
     return render(
         request,
         'statistic/players-averages.html',
@@ -33,12 +42,16 @@ def players_averages(request, username, team_pk):
 
 def team_averages(request, username, team_pk):
     games = Game.objects.filter(team__pk=team_pk)
-    players_stats = Statistic.objects.filter(game__pk__in=[game.id for game in games])
+    players_stats = Statistic.objects.filter(
+        game__pk__in=[game.id for game in games]
+    )
 
     team_totals_calculator = TeamTotalsCalculator()
     team_stats = team_totals_calculator.add_players_statistics(players_stats)
     team_averages_calculator = TeamAveragesCalculator()
-    team_averages = team_averages_calculator.team_averages(team_stats, len(games))
+    team_averages = team_averages_calculator.team_averages(
+        team_stats, len(games)
+    )
 
     return render(
         request,
