@@ -1,12 +1,13 @@
 
 {% extends 'account/base.html' %}
+{% load cloudinary %}
 
 {% block title %}Équipe {{ team.club_name }}{% endblock %}
 
 {% block content %}
 
 <h2>{{ team.club_name }}</h2>
-{{ team.picture }}
+<img src="{{ team.picture.url }}" width="150", height="150">
 {{ team.city }}
 {{ team.province }}
 {{ team.level }}

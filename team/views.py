@@ -20,7 +20,7 @@ def team_create(request, username):
     """
     team_form = TeamCreateForm()
     if request.method == 'POST':
-        team_form = TeamCreateForm(request.POST)
+        team_form = TeamCreateForm(request.POST, request.FILES)
         if team_form.is_valid():
             team = Team(
                 club_name=team_form.cleaned_data['club_name'],

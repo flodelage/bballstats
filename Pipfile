@@ -9,6 +9,7 @@ psycopg2 = "*"
 psycopg2-binary = "*"
 pillow = "*"
 python-dotenv = "*"
+cloudinary = "*"
 
 [dev-packages]
 

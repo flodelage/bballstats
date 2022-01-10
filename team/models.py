@@ -3,6 +3,8 @@ from django.db import models
 from django.conf import settings
 import datetime
 
+from cloudinary.models import CloudinaryField
+
 
 class Team(models.Model):
     club_name = models.CharField(
@@ -47,10 +49,10 @@ class Team(models.Model):
         default=SEASON_CHOICES[1][0]
     )
 
-    picture = models.ImageField(
-        verbose_name='Photo',
-        blank=True,
-        null=True
+    picture = CloudinaryField(
+        'Photo',
+        null=True,
+        blank=True
     )
 
     # Foreign Key(s):

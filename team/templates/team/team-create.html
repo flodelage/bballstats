@@ -7,7 +7,7 @@
 
 <h2>Créer une équipe</h2>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ team_form.as_p }}
     <button type="submit">Créer</button>
