@@ -24,7 +24,9 @@
 {% if games %}
     <h3>Leaders</h3>
     {% for leader in team_leaders %}
-        {{ leader.player.picture }}
+        {% if leader.picture %}
+            <img src="{{ leader.picture.url}}"  width="150", height="150" alt="player-picture">
+        {% endif %}
         {{ leader.player.first_name }} {{ leader.player.last_name }}
         {{ leader.value }} {{ leader.stat }}
     {% endfor %}
