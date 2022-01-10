@@ -26,7 +26,7 @@ def players_averages(request, username, team_pk):
             'username': username,
             'team_pk': team_pk,
             'games': games,
-            'players_stats': players_stats_with_averages
+            'players_stats': players_stats_with_averages,
         }
     )
 

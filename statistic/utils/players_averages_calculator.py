@@ -1,7 +1,18 @@
 
+from typing import Union, List
+from django.db.models import QuerySet
+
+from player.models import Player
+from statistic.models import Statistic
+
+
 class PlayersAveragesCalculator():
 
-    def organise_stats_into_dicts(self, players, players_stats):
+    def organise_stats_into_dicts(
+            self,
+            players: Union[QuerySet, List[Player]],
+            players_stats: Union[QuerySet, List[Statistic]]
+        ) -> list:
         players_dicts_list = [{'player': player, 'stats': []} for player in players]
         for stats in players_stats:
             for player_dict in players_dicts_list:
@@ -10,7 +21,7 @@ class PlayersAveragesCalculator():
         return players_dicts_list
 
 
-    def add_games_stats(self, players_dicts_list):
+    def add_games_stats(self, players_dicts_list: list) -> list:
         for players_dict in players_dicts_list:
             player_stats_total = {
                 'points': 0,
@@ -50,7 +61,7 @@ class PlayersAveragesCalculator():
         return players_dicts_list
 
 
-    def players_averages(self, players_dicts_list):
+    def players_averages(self, players_dicts_list: list) -> list:
         for player_dict in players_dicts_list:
             games_played = len(player_dict['stats'])
             if games_played > 0:
@@ -92,7 +103,11 @@ class PlayersAveragesCalculator():
         return players_dicts_list
 
 
-    def final_stats(self, players, players_stats):
+    def final_stats(
+            self,
+            players: Union[QuerySet, List[Player]],
+            players_stats: Union[QuerySet, List[Statistic]]
+        ) -> list:
         players_dicts_list = self.organise_stats_into_dicts(players, players_stats)
         players_dicts_list_with_totals = self.add_games_stats(players_dicts_list)
         return self.players_averages(players_dicts_list_with_totals)
