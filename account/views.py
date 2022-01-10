@@ -22,6 +22,10 @@ def signup_page(request):
     """
     Allow a user to register an account
     """
+    # Prevent user to go back to signup page if is already logged in
+    if request.user.is_authenticated:
+        return redirect(settings.LOGIN_REDIRECT_URL)
+
     signup_form = ProfileCreationForm()
     if request.method == 'POST':
         signup_form = ProfileCreationForm(request.POST)
@@ -40,7 +44,7 @@ def login_page(request):
     """
     Allow a user to log in
     """
-    # Prevent user to go back to login page then is already logged in
+    # Prevent user to go back to login page if is already logged in
     if request.user.is_authenticated:
         return redirect(settings.LOGIN_REDIRECT_URL)
 
