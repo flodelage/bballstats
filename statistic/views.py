@@ -19,15 +19,13 @@ def players_averages(request, username, team_pk):
     )
 
     players_averages_calculator = PlayersAveragesCalculator()
-    players_stats_with_averages = players_averages_calculator.final_stats(
-        players, players_stats
-    )
 
     players_stats_with_averages = sorted(
-        players_stats_with_averages,
+        players_averages_calculator.final_stats(players, players_stats),
         key=lambda stats: stats['stats_averages']['points_avg'],
         reverse=True
     )
+
     return render(
         request,
         'statistic/players-averages.html',

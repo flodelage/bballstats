@@ -36,7 +36,11 @@ def game_create(request, username, team_pk):
 def game_detail(request, username, team_pk, game_pk):
     team = get_object_or_404(Team, pk=team_pk)
     game = get_object_or_404(Game, pk=game_pk)
-    players_stats = Statistic.objects.filter(game__pk=game_pk)
+    players_stats = sorted(
+        Statistic.objects.filter(game__pk=game_pk),
+        key=lambda stats: stats.points,
+        reverse=True
+    )
 
     team_totals_calculator = TeamTotalsCalculator()
     team_stats = team_totals_calculator.teams_statistics(players_stats)

@@ -10,10 +10,10 @@
 <a href="{% url 'game_delete' username team.pk game.pk %}">Supprimer</a>
 
 <h3>Statistiques des joueurs</h3>
-{% for stat in players_stats %}
-    {{ stat.player.first_name }} {{ stat.player.last_name }}:
+{% for stats in players_stats %}
+    {{ stats.player.first_name }} {{ stats.player.last_name }}:
     <br>
-    {{ stat.points }} points | tirs réussis {{ stat.field_goals_made }}  | tirs tentés {{ stat.field_goals_attempted }} | % tirs {{ stat.field_goals_percent }} | 3pts réussis {{ stat.three_points_made }} | 3pts tentés {{ stat.three_points_attempted }} | % 3pts {{ stat.three_points_percent }} | LF réussis {{ stat.free_throws_made }} | LF tentés {{ stat.free_throws_attempted }} | % LF {{ stat.free_throws_percent }} | rebonds off {{ stat.offensive_rebounds }} | rebonds def {{ stat.defensive_rebounds }} | rebonds {{ stat.rebounds }} | passes décisives {{ stat.assists }} | interceptions {{ stat.steals }} | contre {{ stat.blocks }} | b. perdus {{ stat.turnovers }} | fautes {{ stat.fouls }}
+    {{ stats.points }} points | tirs réussis {{ stats.field_goals_made }}  | tirs tentés {{ stats.field_goals_attempted }} | % tirs {{ stats.field_goals_percent }} | 3pts réussis {{ stats.three_points_made }} | 3pts tentés {{ stats.three_points_attempted }} | % 3pts {{ stats.three_points_percent }} | LF réussis {{ stats.free_throws_made }} | LF tentés {{ stats.free_throws_attempted }} | % LF {{ stats.free_throws_percent }} | rebonds off {{ stats.offensive_rebounds }} | rebonds def {{ stats.defensive_rebounds }} | rebonds {{ stats.rebounds }} | passes décisives {{ stats.assists }} | interceptions {{ stats.steals }} | contre {{ stats.blocks }} | b. perdus {{ stats.turnovers }} | fautes {{ stats.fouls }}
     <br>
     <br>
 {% endfor %}
