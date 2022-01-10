@@ -30,7 +30,7 @@
 {% if games %}
     <a href="{% url 'players_averages' username team.pk %}"><h3>Statistiques de la saison</h3></a> <br>
     {% for game in games %}
-    <a href="{% url 'game_detail' username team.pk game.pk %}">
+    <a href="{% url 'game_detail_players' username team.pk game.pk %}">
         {{ game.date }} - {{ game.place }}
         {% if game.place == 'home' %}
             <br>

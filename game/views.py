@@ -33,7 +33,7 @@ def game_create(request, username, team_pk):
     )
 
 
-def game_detail(request, username, team_pk, game_pk):
+def game_detail_players(request, username, team_pk, game_pk):
     team = get_object_or_404(Team, pk=team_pk)
     game = get_object_or_404(Game, pk=game_pk)
     players_stats = sorted(
@@ -42,17 +42,33 @@ def game_detail(request, username, team_pk, game_pk):
         reverse=True
     )
 
+    return render(
+        request,
+        'game/game-detail-players.html',
+        {
+            'username': username,
+            'team': team,
+            'game': game,
+            'players_stats':players_stats
+        }
+    )
+
+
+def game_detail_team(request, username, team_pk, game_pk):
+    team = get_object_or_404(Team, pk=team_pk)
+    game = get_object_or_404(Game, pk=game_pk)
+    players_stats = Statistic.objects.filter(game__pk=game_pk)
+
     team_totals_calculator = TeamTotalsCalculator()
     team_stats = team_totals_calculator.teams_statistics(players_stats)
 
     return render(
         request,
-        'game/game-detail.html',
+        'game/game-detail-team.html',
         {
             'username': username,
             'team': team,
             'game': game,
-            'players_stats':players_stats,
             'team_stats': team_stats
         }
     )

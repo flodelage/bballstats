@@ -1,0 +1,92 @@
+
+{% extends 'account/base.html' %}
+
+{% block title %}Match contre {{ game.opponent }}{% endblock %}
+
+{% block content %}
+
+<h2>{{ team.club_name }} {{ game.team_points }} - {{ game.opponent_points }} {{ game.opponent }}</h2>
+<a href="{% url 'game_update' username team.pk game.pk %}">Modifier</a>
+<a href="{% url 'game_delete' username team.pk game.pk %}">Supprimer</a>
+
+<h3>Statistiques du match</h3>
+
+<p>Statistiques des joueurs</p>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Joueurs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'game_detail_team' username team.pk game.pk %}">Equipe</a>
+    </li>
+</ul>
+<table class="table">
+  <thead class=".thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Pt</th>
+      <th scope="col">Rbo</th>
+      <th scope="col">Rbd</th>
+      <th scope="col">Rbt</th>
+      <th scope="col">Pd</th>
+      <th scope="col">Int</th>
+      <th scope="col">Ctr</th>
+      <th scope="col">Bp</th>
+      <th scope="col">Fp</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p_stats in players_stats %}
+      <tr>
+        <th scope="row">{{ p_stats.player.first_name }} {{ p_stats.player.last_name }}</th>
+        <td>{{ p_stats.points }}</td>
+        <td>{{ p_stats.offensive_rebounds }}</td>
+        <td>{{ p_stats.defensive_rebounds }}</td>
+        <td>{{ p_stats.rebounds }}</td>
+        <td>{{ p_stats.assists }}</td>
+        <td>{{ p_stats.steals }}</td>
+        <td>{{ p_stats.blocks }}</td>
+        <td>{{ p_stats.turnovers }}</td>
+        <td>{{ p_stats.fouls }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<p>Statistiques des joueurs aux tirs</p>
+<table class="table">
+  <thead class=".thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Pt</th>
+      <th scope="col">Tm</th>
+      <th scope="col">Tr</th>
+      <th scope="col">T%</th>
+      <th scope="col">3Tm</th>
+      <th scope="col">3Tr</th>
+      <th scope="col">3T%</th>
+      <th scope="col">Lfm</th>
+      <th scope="col">Lfr</th>
+      <th scope="col">Lf%</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p_stats in players_stats %}
+      <tr>
+        <th scope="row">{{ p_stats.player.first_name }} {{ p_stats.player.last_name }}</th>
+        <td>{{p_stats.points}}</td>
+        <td>{{ p_stats.field_goals_made }}</td>
+        <td>{{ p_stats.field_goals_attempted }}</td>
+        <td>{{ p_stats.field_goals_percent }}</td>
+        <td>{{ p_stats.three_points_made }}</td>
+        <td>{{ p_stats.three_points_attempted }}</td>
+        <td>{{ p_stats.three_points_percent }}</td>
+        <td>{{ p_stats.free_throws_made }}</td>
+        <td>{{ p_stats.free_throws_attempted }}</td>
+        <td>{{ p_stats.free_throws_percent }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
