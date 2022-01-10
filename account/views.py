@@ -40,6 +40,10 @@ def login_page(request):
     """
     Allow a user to log in
     """
+    # Prevent user to go back to login page then is already logged in
+    if request.user.is_authenticated:
+        return redirect(settings.LOGIN_REDIRECT_URL)
+
     login_form = ProfileLoginForm()
     if request.method == 'POST':
         login_form = ProfileLoginForm(data=request.POST)
