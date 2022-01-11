@@ -2,9 +2,9 @@
 from django.db import models
 from django.conf import settings
 
-from team.models import Team
-
 from cloudinary.models import CloudinaryField
+
+from team.models import Team
 
 
 class Player(models.Model):

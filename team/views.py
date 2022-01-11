@@ -2,6 +2,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.db.models import Q
+import datetime
+
+import cloudinary.uploader
 
 from account.models import Profile
 from player.models import Player
@@ -11,6 +15,8 @@ from statistic.models import Statistic
 from statistic.utils.players_averages_calculator import PlayersAveragesCalculator
 from statistic.utils.team_leaders_calculator import TeamLeadersCalculator
 from .forms import TeamCreateForm
+
+
 
 
 @login_required
@@ -101,7 +107,11 @@ def team_delete(request, username, team_pk):
 
 @login_required
 def team_select(request, username):
-    teams = Team.objects.filter(profile__pk=request.user.pk).order_by('season')
+    near_seasons = [
+        (f'{year}-{year+1}')
+        for year in range(datetime.datetime.now().year-1, datetime.datetime.now().year+2)
+    ]
+    teams = Team.objects.filter(Q(profile__pk=request.user.pk), Q(season__in=near_seasons)).order_by('season')
     if teams:
         return render(
             request,
