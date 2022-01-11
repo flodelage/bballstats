@@ -49,11 +49,16 @@ def team_create(request, username):
 
 @login_required
 def teams_list(request, username):
-    teams = Team.objects.filter(profile__pk=request.user.pk).order_by('-season')
+    teams = Team.objects.filter(profile__pk=request.user.pk)
+    seasons = {team.season for team in teams}
     return render(
         request,
         'team/teams-list.html',
-        {'username':username, 'teams': teams}
+        {
+            'username':username,
+            'teams': teams,
+            'seasons': sorted(seasons, reverse=True)
+        }
     )
 
 
@@ -111,7 +116,7 @@ def team_select(request, username):
         (f'{year}-{year+1}')
         for year in range(datetime.datetime.now().year-1, datetime.datetime.now().year+2)
     ]
-    teams = Team.objects.filter(Q(profile__pk=request.user.pk), Q(season__in=near_seasons)).order_by('season')
+    teams = Team.objects.filter(Q(profile__pk=request.user.pk), Q(season__in=near_seasons)).order_by('-season')
     if teams:
         return render(
             request,

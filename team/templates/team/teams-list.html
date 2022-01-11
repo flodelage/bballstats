@@ -7,9 +7,15 @@
 
 <h2>Mes équipes</h2>
 
+
 {% if teams %}
-    {% for team in teams %}
-        <a href="{% url 'team_detail' username team.pk %}">{{ team.club_name }}  {{ team.season }} {{ team.genre }}</a> <br>
+    {% for season in seasons %}
+        <h5>{{ season }}</h5>
+        {% for team in teams %}
+            {% if team.season == season %}
+                <a href="{% url 'team_detail' username team.pk %}">{{ team.club_name }}  {{ team.season }} {{ team.genre }}</a> <br>
+            {% endif %}
+        {% endfor %}
     {% endfor %}
 {% else %}
     <p>Tu n'as pas encore d'équipe</p>
