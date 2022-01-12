@@ -20,15 +20,15 @@
   <thead class=".thead-dark">
     <tr>
       <th scope="col"></th>
-      <th scope="col">Pt</th>
-      <th scope="col">Rbo</th>
-      <th scope="col">Rbd</th>
-      <th scope="col">Rbt</th>
-      <th scope="col">Pd</th>
-      <th scope="col">Int</th>
-      <th scope="col">Ctr</th>
-      <th scope="col">Bp</th>
-      <th scope="col">Fp</th>
+      <th scope="col">PTS</th>
+      <th scope="col">RBO</th>
+      <th scope="col">RBD</th>
+      <th scope="col">RBT</th>
+      <th scope="col">PD</th>
+      <th scope="col">INT</th>
+      <th scope="col">CTR</th>
+      <th scope="col">BP</th>
+      <th scope="col">FP</th>
     </tr>
   </thead>
   <tbody>
@@ -54,16 +54,16 @@
   <thead class=".thead-dark">
     <tr>
       <th scope="col"></th>
-      <th scope="col">Pt</th>
-      <th scope="col">Tm</th>
-      <th scope="col">Tr</th>
+      <th scope="col">PTS</th>
+      <th scope="col">TM</th>
+      <th scope="col">TR</th>
       <th scope="col">T%</th>
-      <th scope="col">3Tm</th>
-      <th scope="col">3Tr</th>
+      <th scope="col">3TM</th>
+      <th scope="col">3TR</th>
       <th scope="col">3T%</th>
-      <th scope="col">Lfm</th>
-      <th scope="col">Lfr</th>
-      <th scope="col">Lf%</th>
+      <th scope="col">LFM</th>
+      <th scope="col">LFR</th>
+      <th scope="col">LF%</th>
     </tr>
   </thead>
   <tbody>
@@ -84,5 +84,8 @@
     {% endfor %}
   </tbody>
 </table>
+
+PTS: Points marqués	RBO: Rebonds offensifs	RBD: Rebonds défensifs	RBT: Rebonds totaux	PD: Passes décisives	INT: Interceptions	CTR: Contres	BP: Ballons perdus	FP: Fautes Personnelles
+TM: Tirs marqués TR: Tirs ratés	T%: Pourcentage de réussite aux tirs	3TM: Trois points marqués	3TR: Trois points ratés	3T%: Pourcentage de réussite à trois points	LFM: Lancers francs marqués	LFR: Lancers francs ratés	LF%: Pourcentage de réussite aux lancers francs
 
 {% endblock content %}
