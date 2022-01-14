@@ -94,9 +94,9 @@ WSGI_APPLICATION = 'bballstats.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': '',
         'PORT': '5432',
     }
@@ -132,7 +132,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Redirections (login, logout)
 LOGIN_REDIRECT_URL = 'home'
@@ -144,8 +146,8 @@ AUTH_USER_MODEL = 'account.Profile'
 
 
 cloudinary.config(
-  cloud_name = os.environ.get('CLOUD_NAME'),
-  api_key = os.environ.get('CLOUD_KEY'),
-  api_secret = os.environ.get('CLOUD_SECRET'),
+  cloud_name = os.getenv('CLOUD_NAME'),
+  api_key = os.getenv('CLOUD_KEY'),
+  api_secret = os.getenv('CLOUD_SECRET'),
   secure = True
 )
