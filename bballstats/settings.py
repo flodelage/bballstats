@@ -19,6 +19,9 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -150,4 +153,20 @@ cloudinary.config(
   api_key = os.getenv('CLOUD_KEY'),
   api_secret = os.getenv('CLOUD_SECRET'),
   secure = True
+)
+
+
+# Sentry:
+sentry_sdk.init(
+    dsn="https://c742ac6be4054ce68e3e1a208c4daa70@o1097635.ingest.sentry.io/6178007",
+    integrations=[DjangoIntegration()],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
 )
