@@ -111,7 +111,7 @@ def team_delete(request, username, team_pk):
 
 
 @login_required
-def team_select(request, username):
+def team_select(request, username):  # sourcery skip: use-named-expression
     near_seasons = [
         (f'{year}-{year+1}')
         for year in range(datetime.datetime.now().year-1, datetime.datetime.now().year+2)

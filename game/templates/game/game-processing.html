@@ -1,0 +1,79 @@
+
+{% extends 'account/base.html' %}
+
+{% block title %}Match en cours{% endblock %}
+
+{% block content %}
+
+    <h2>Match en cours</h2>
+    <div style="display: flex; justify-content: space-around;">
+        <div style="display: flex; flex-direction: column;">
+            <a href=""><p>2Pm</p></a>
+            <a href=""><p>2Pr</p></a>
+            <a href=""><p>3Pm</p></a>
+            <a href=""><p>3Pr</p></a>
+            <a href=""><p>LFm</p></a>
+            <a href=""><p>LFr</p></a>
+            <a href=""><p>RBo</p></a>
+            <a href=""><p>RBd</p></a>
+            <a href=""><p>PD</p></a>
+            <a href=""><p>Int</p></a>
+            <a href=""><p>Ctr</p></a>
+            <a href=""><p>BP</p></a>
+            <a href=""><p>FP</p></a>
+        </div>
+
+        <div style="display: flex; flex-direction: column;">
+            {% for player in players %}
+                <a href="">{{ player.first_name }} {{ player.last_name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br>
+    <table class="table">
+      <thead class=".thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Pts</th>
+          <th scope="col">Tm</th>
+          <th scope="col">Tr</th>
+          <th scope="col">3Pm</th>
+          <th scope="col">3Pr</th>
+          <th scope="col">Lfm</th>
+          <th scope="col">Lfr</th>
+          <th scope="col">Rbo</th>
+          <th scope="col">Rbd</th>
+          <th scope="col">Rbt</th>
+          <th scope="col">Pd</th>
+          <th scope="col">Int</th>
+          <th scope="col">Ctr</th>
+          <th scope="col">Bp</th>
+          <th scope="col">Fp</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p_stats in players_stats %}
+          <tr>
+            <th scope="row">{{ p_stats.player.first_name }} {{ p_stats.player.last_name }}</th>
+            <td>{{ p_stats.points }}</td>
+            <td>{{ p_stats.field_goals_made }}</td>
+            <td>{{ p_stats.field_goals_attempted }}</td>
+            <td>{{ p_stats.three_points_made }}</td>
+            <td>{{ p_stats.three_points_attempted }}</td>
+            <td>{{ p_stats.free_throws_made }}</td>
+            <td>{{ p_stats.free_throws_attempted }}</td>
+            <td>{{ p_stats.offensive_rebounds }}</td>
+            <td>{{ p_stats.defensive_rebounds }}</td>
+            <td>{{ p_stats.rebounds }}</td>
+            <td>{{ p_stats.assists }}</td>
+            <td>{{ p_stats.steals }}</td>
+            <td>{{ p_stats.blocks }}</td>
+            <td>{{ p_stats.turnovers }}</td>
+            <td>{{ p_stats.fouls }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock content %}

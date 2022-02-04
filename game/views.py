@@ -6,6 +6,7 @@ from django.urls import reverse
 from .models import Game
 from.forms import GameCreateForm, GameUpdateForm
 from team.models import Team
+from player.models import Player
 from statistic.models import Statistic
 from statistic.utils.team_totals_calculator import TeamTotalsCalculator
 
@@ -20,15 +21,46 @@ def game_create(request, username, team_pk):
                 opponent = form.cleaned_data['opponent'],
                 place = form.cleaned_data['place']
             )
-            print(get_object_or_404(Team, pk=team_pk))
             game.team = get_object_or_404(Team, pk=team_pk)
             game.save()
+            return redirect(reverse('game_processing', kwargs={'username': username, 'team_pk': team_pk, 'game_pk': game.pk}))
     return render(
         request,
         'game/game-create.html',
         {
             'form': form,
             'username': username,
+        }
+    )
+
+
+# @login_required
+# def choose_starters(request, username, team_pk, game_pk):
+#     players = Player.objects.filter(team__pk=team_pk).order_by('last_name')
+#     return render(
+#         request,
+#         'game/game-starters.html',
+#         {'username': username, 'players': players}
+#     )
+
+
+@login_required
+def game_processing(request, username, team_pk, game_pk):
+    players = Player.objects.filter(team__pk=team_pk).order_by('last_name')
+    players_stats = []
+    for p in players:
+        s = Statistic()
+        s.game = get_object_or_404(Game, pk=game_pk)
+        s.player = get_object_or_404(Player, pk=p.pk)
+        s.save()
+        players_stats.append(s)
+    return render(
+        request,
+        'game/game-processing.html',
+        {
+            'username': username,
+            'players': players,
+            'players_stats': players_stats
         }
     )
 

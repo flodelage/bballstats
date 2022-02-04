@@ -1,0 +1,20 @@
+
+{% extends 'account/base.html' %}
+
+{% block title %}Titulaires{% endblock %}
+
+{% block content %}
+
+<h2>Titulaires</h2>
+
+{% for player in players %}
+    {{ player.first_name }} {{ player.last_name }}
+{% endfor %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Commencer</button>
+</form>
+
+{% endblock content %}
