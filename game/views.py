@@ -65,6 +65,11 @@ def game_processing(request, username, team_pk, game_pk):
     )
 
 
+@login_required
+def game_compute_stat(request):
+    return JsonResponse({})
+
+
 def game_detail_players(request, username, team_pk, game_pk):
     team = get_object_or_404(Team, pk=team_pk)
     game = get_object_or_404(Game, pk=game_pk)
@@ -93,7 +98,6 @@ def game_detail_team(request, username, team_pk, game_pk):
 
     team_totals_calculator = TeamTotalsCalculator()
     team_stats = team_totals_calculator.teams_statistics(players_stats)
-
     return render(
         request,
         'game/game-detail-team.html',

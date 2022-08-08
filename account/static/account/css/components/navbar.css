@@ -1,0 +1,36 @@
+
+.navbar {
+    background-color: var(--primary-color) !important;
+    padding: 10px 60px;
+    opacity: 0.98;
+}
+@media only screen and (max-device-width: 560px) {
+    .navbar {
+        padding: 10px 24px;
+    }
+}
+
+nav ul li a, .navbar-brand {
+    font-size: 1rem !important;
+    color: white !important;
+    transition: 0.7s !important;
+}
+@media only screen and (max-device-width: 560px) {
+    nav ul li a, .navbar-brand {
+        font-size: 0.9rem !important;
+    }
+}
+
+nav ul li a:hover, .navbar-brand:hover {
+    opacity: 0.5;
+}
+
+.navbar-toggler span i {
+    color: white;
+    font-size: 1.2rem;
+    transition: 0.7s !important;
+}
+
+.navbar-toggler span i:hover {
+    opacity: 0.5;
+}

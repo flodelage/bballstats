@@ -1,0 +1,28 @@
+
+<nav class="navbar fixed-top navbar-expand-lg .navbar-dark bg-dark">
+    <div class="container-fluid p-0">
+        <a class="navbar-brand" href="{% url 'home' %}">Accueil</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fa-solid fa-align-justify"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'team_select' username %}"><i class="fas fa-basketball-ball"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'teams_list' username %}"><i class="fas fa-users"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

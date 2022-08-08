@@ -13,7 +13,7 @@ def home(request):
     context = {'username': request.user.username} if request.user.is_authenticated else {}
     return render(
         request,
-        'account/home.html',
+        'account/pages/home.html',
         context
     )
 
